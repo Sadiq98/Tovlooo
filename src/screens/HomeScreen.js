@@ -120,7 +120,7 @@ const HomeScreen = () => {
           italicWords={["thousands", "switching"]}
         />
 
-        <Grid templateColumns={{ base: "1fr", sm: "repeat(2, 1fr)" }}>
+        <Grid templateColumns={{ base: "1fr", sm: "repeat(2, 1fr)" }} gap={5}>
           <Image
             src="../assets/WhyChoose.png"
             alt="Why choose us"
@@ -306,7 +306,6 @@ const HomeScreen = () => {
           templateColumns={{ base: "1fr", sm: "repeat(2, 1fr)" }}
           border="2px solid"
           borderColor="text.primary"
-          gap={5}
         >
           <Image
             src="../assets/ShareLove.png"
