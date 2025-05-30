@@ -80,7 +80,7 @@ const Header = () => {
                         <Menu.CheckboxItem
                           key={language}
                           value={language}
-                          checked={group.isChecked(language)}
+                          // checked={group.isChecked(language)}
                           onCheckedChange={() => group.toggleValue(language)}
                         >
                           {language}

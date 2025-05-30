@@ -15,6 +15,7 @@ import { IoPaw } from "react-icons/io5";
 import { IoGiftSharp } from "react-icons/io5";
 import { FaCamera } from "react-icons/fa";
 import { MdCelebration } from "react-icons/md";
+import Video from "../components/custom/Video";
 
 const HomeScreen = () => {
   const advantages = [
@@ -297,6 +298,9 @@ const HomeScreen = () => {
           </Flex>
         </Stack>
       </Stack>
+
+      {/* Video */}
+      {/* <Video /> */}
 
       {/* Ready to Share */}
       <Stack w="full" alignItems="center" gap={8} py={10}>
