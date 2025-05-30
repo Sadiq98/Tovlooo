@@ -16,8 +16,8 @@ import Logo from "../../data/Logo";
 import { languages } from "../../data/language";
 
 const Header = () => {
-  const group = useCheckboxGroup({ defaultValue: ["English"] });
-  const selectedLanguages = group.value.join(", ");
+  const group = useCheckboxGroup({ defaultValue: "English" });
+  const selectedLanguage = group.value;
 
   return (
     <>
@@ -26,7 +26,6 @@ const Header = () => {
         position="fixed"
         top="0"
         p={5}
-        mx={"auto"}
         zIndex="10"
         w="full"
         justifyContent="center"
@@ -69,15 +68,14 @@ const Header = () => {
             <Menu.Root>
               <Menu.Trigger asChild>
                 <Button variant="ghost" color="text.primary" size="sm">
-                  <FaGlobe /> {selectedLanguages || "Select Language"}{" "}
+                  <FaGlobe /> {selectedLanguage || "Select Language"}{" "}
                   <IoChevronDown />
                 </Button>
               </Menu.Trigger>
               <Portal>
                 <Menu.Positioner>
                   <Menu.Content>
-                    <Menu.ItemGroup>
-                      <Menu.ItemGroupLabel>Features</Menu.ItemGroupLabel>
+                    <Menu.ItemGroup color="text.primary">
                       {languages.map(({ language }) => (
                         <Menu.CheckboxItem
                           key={language}
