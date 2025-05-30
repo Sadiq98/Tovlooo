@@ -237,14 +237,14 @@ const HomeScreen = () => {
 
             {/* Left Side */}
             <Image
-              src="../assets/Bone.png"
+              src="../assets/bone.png"
               position="absolute"
               w="100px"
               top="0"
               right="0"
             />
             <Image
-              src="../assets/Bone.png"
+              src="../assets/bone.png"
               position="absolute"
               w="80px"
               top="25%"
@@ -252,7 +252,7 @@ const HomeScreen = () => {
               transform="rotate(100deg)"
             />
             <Image
-              src="../assets/Bone.png"
+              src="../assets/bone.png"
               position="absolute"
               w="50px"
               bottom="0"
@@ -262,7 +262,7 @@ const HomeScreen = () => {
 
             {/* Right Side */}
             <Image
-              src="../assets/Bone.png"
+              src="../assets/bone.png"
               position="absolute"
               w="90px"
               top="0"
@@ -270,7 +270,7 @@ const HomeScreen = () => {
               transform="rotate(75deg)"
             />
             <Image
-              src="../assets/Bone.png"
+              src="../assets/bone.png"
               position="absolute"
               w="70px"
               bottom="20%"
@@ -278,7 +278,7 @@ const HomeScreen = () => {
               transform="rotate(45deg)"
             />
             <Image
-              src="../assets/Bone.png"
+              src="../assets/bone.png"
               position="absolute"
               w="40px"
               bottom="0"
