@@ -25,6 +25,18 @@ body{
     background-color: #FAFCEB;
 }
 
+.mySwiper .swiper-pagination-bullet {
+  background-color: transparent;
+  border: 1px solid #FBFFDC; 
+width: 12px;
+  height: 12px;
+  opacity: 1;             
+}
+
+.mySwiper .swiper-pagination-bullet-active {
+  background-color: #FBFFDC; 
+}
+
 
 
 

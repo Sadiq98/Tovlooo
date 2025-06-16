@@ -1,11 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from "react";
+import { useEffect, lazy } from "react";
 import Header from "./components/custom/Header";
 import Footer from "./components/custom/Footer";
-import HomeScreen from "./screens/HomeScreen";
 import { Flex } from "@chakra-ui/react";
+
+const HomeScreen = lazy(() => import("./screens/HomeScreen"));
 
 const App = () => {
   useEffect(() => {
@@ -20,7 +21,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Header />
-      <Flex direction="column" as="main" pt="24" color="text.primary">
+      <Flex direction="column" as="main" color="text.primary">
         <Routes>
           <Route path="/" element={<HomeScreen />} />
         </Routes>

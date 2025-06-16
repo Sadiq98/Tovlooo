@@ -23,7 +23,7 @@ const Header = () => {
     <>
       <Flex
         as="header"
-        position="fixed"
+        position="absolute"
         top="0"
         p={5}
         zIndex="10"
@@ -31,7 +31,7 @@ const Header = () => {
         justifyContent="center"
       >
         <Flex
-          bg="background.default"
+          bg="transparent"
           w="full"
           justify="space-between"
           align="center"
@@ -39,7 +39,7 @@ const Header = () => {
           px={5}
           borderRadius="lg"
           border="2px solid"
-          borderColor="text.primary"
+          borderColor="text.ivory"
         >
           {/* Left Nav */}
           <Flex align="center" gap={4}>
@@ -57,8 +57,8 @@ const Header = () => {
           <Flex align="center" gap={5}>
             <Button
               size="xs"
-              bg="text.primary"
-              color="white"
+              bg="text.ivory"
+              color="text.primary"
               borderRadius="md"
               _hover={{ bg: "#046B57" }}
             >
@@ -67,7 +67,7 @@ const Header = () => {
 
             <Menu.Root>
               <Menu.Trigger asChild>
-                <Button variant="ghost" color="text.primary" size="sm">
+                <Button variant="ghost" color="text.ivory" size="sm">
                   <FaGlobe /> {selectedLanguage || "Select Language"}{" "}
                   <IoChevronDown />
                 </Button>
@@ -75,7 +75,7 @@ const Header = () => {
               <Portal>
                 <Menu.Positioner>
                   <Menu.Content>
-                    <Menu.ItemGroup color="text.primary">
+                    <Menu.ItemGroup color="text.ivory">
                       {languages.map(({ language }) => (
                         <Menu.CheckboxItem
                           key={language}
@@ -93,9 +93,9 @@ const Header = () => {
               </Portal>
             </Menu.Root>
 
-            <Icon as={FaHandshake} color="text.primary" boxSize={8} />
-            <Icon as={FaUserAlt} color="text.primary" boxSize={6} />
-            <Icon as={RiShoppingBasketFill} color="text.primary" boxSize={8} />
+            <Icon as={FaHandshake} color="text.ivory" boxSize={8} />
+            <Icon as={FaUserAlt} color="text.ivory" boxSize={6} />
+            <Icon as={RiShoppingBasketFill} color="text.ivory" boxSize={8} />
           </Flex>
         </Flex>
       </Flex>

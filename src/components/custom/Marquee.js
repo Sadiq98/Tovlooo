@@ -6,9 +6,13 @@ const CustomMarquee = ({ data }) => {
     <Box py={5} bg="background.lightGreen">
       <Marquee autoFill>
         {data.map(({ icon: IconComponent, text }, index) => (
-          <Flex key={index} alignItems="center" py={1} px={10} gap={3}>
+          <Flex key={index} alignItems="center" py={1} px={5} gap={3}>
             <Icon color="text.primary" as={IconComponent} boxSize={10} />
-            <Heading color="text.primary" fontSize="text4" fontStyle="italic">
+            <Heading
+              color="text.primary"
+              fontSize="text4"
+              fontWeight="semibold"
+            >
               {text}
             </Heading>
           </Flex>

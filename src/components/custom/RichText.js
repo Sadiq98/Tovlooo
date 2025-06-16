@@ -2,8 +2,9 @@ import { Heading, Box } from "@chakra-ui/react";
 
 const RichText = ({
   text,
-  width = "xl",
+  width = "2xl",
   fontSize = "h4",
+  color = "text.primary",
   italicWords = [],
   ...props
 }) => {
@@ -28,11 +29,12 @@ const RichText = ({
 
   return (
     <Heading
-      color="text.primary"
+      color={color}
       fontSize={fontSize}
-      lineHeight="heading2"
+      lineHeight="heading1"
       letterSpacing="default"
       textAlign="center"
+      textTransform="uppercase"
       width={width}
       {...props}
     >
