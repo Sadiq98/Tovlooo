@@ -34,7 +34,7 @@ const CustomButton = ({ children, onClick, ...props }) => {
         left: 0,
         width: "100%",
         height: "100%",
-        border: "2px solid teal",
+        border: "2px solid #017D65",
         borderRadius: "8px",
         transform: "translate(10px, 10px)",
         transition: "transform 0.2s ease-out",
