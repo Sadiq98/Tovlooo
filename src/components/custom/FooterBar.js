@@ -1,9 +1,11 @@
 import { Flex, Icon, Link, Text } from "@chakra-ui/react";
-import SingleLink from "./SingleLink";
 
 import { IoLogoWhatsapp } from "react-icons/io";
 import { RiInstagramFill } from "react-icons/ri";
 import { FaFacebookF } from "react-icons/fa";
+import { lazy } from "react";
+
+const SingleLink = lazy(() => import("./SingleLink"));
 
 const FooterBar = () => {
   const socials = [
@@ -30,31 +32,27 @@ const FooterBar = () => {
         px={5}
         py={2}
       >
-        <Flex fontSize="xs" gap={20}>
-          <Text>© {new Date().getFullYear()} TOVLO</Text>
+        <Flex gap={10}>
           <SingleLink
             fontSize="xs"
             label="Privacy Policy"
             textDecoration="underline"
+            color="text.primary"
           />
           <SingleLink
             fontSize="xs"
             label="Delivery & return"
             textDecoration="underline"
+            color="text.primary"
           />
           <SingleLink
             fontSize="xs"
             label="Terms of use"
             textDecoration="underline"
+            color="text.primary"
           />
         </Flex>
-        <Flex gap={3}>
-          {socials.map(({ icon, link }, index) => (
-            <Link href={link} bgColor="text.primary" p={1} borderRadius="full">
-              <Icon color="white" as={icon} boxSize={4} />
-            </Link>
-          ))}
-        </Flex>
+        <Text fontSize="sm"> © {new Date().getFullYear()} TOVLO</Text>
       </Flex>
     </>
   );

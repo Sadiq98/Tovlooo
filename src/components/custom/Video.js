@@ -21,7 +21,6 @@ const Video = () => {
         <video
           ref={videoRef}
           width="100%"
-          muted
           controls={false}
           style={{ display: "block" }}
         >
@@ -37,15 +36,17 @@ const Video = () => {
             w="100%"
             h="100%"
             bg="rgba(0, 0, 0, 0.6)"
+            borderRadius="20px"
             display="flex"
             alignItems="center"
             justifyContent="center"
             cursor="pointer"
           >
             <IconButton
-              color="text.primary"
-              bg="white"
-              _hover={{ bg: "whiteAlpha.900" }}
+              color="background.green"
+              bg="text.ivory"
+              _hover={{ bg: "text.darkIvory" }}
+              _disabled={{ bg: "text.darkGrey" }}
               rounded="full"
               boxSize={20}
             >

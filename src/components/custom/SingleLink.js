@@ -12,7 +12,7 @@ const SingleLink = ({ url, icon, label, ...props }) => {
       display="flex"
       alignItems="center"
       textDecoration="none"
-      _hover={{ textDecoration: "none" }}
+      _hover={{ textDecoration: "none", color: "text.darkIvory" }}
       _focus={{ outline: "none" }}
       onClick={() => {
         window.scrollTo({ top: 0, behavior: "auto" });

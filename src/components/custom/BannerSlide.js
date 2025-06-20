@@ -1,5 +1,6 @@
 import { Box, Stack, Heading, Text } from "@chakra-ui/react";
 import { Suspense, lazy } from "react";
+
 const CustomButton = lazy(() => import("./CustomButton"));
 
 const BannerSlide = ({ heading, text, button, bgImage }) => {
@@ -31,7 +32,12 @@ const BannerSlide = ({ heading, text, button, bgImage }) => {
         />
 
         {/* Text */}
-        <Stack gap="10" color="text.ivory" position="relative" w="5xl">
+        <Stack
+          gap="10"
+          color="text.ivory"
+          position="relative"
+          w={{ base: "lg", md: "2xl", lg: "2xl", xl: "4xl" }}
+        >
           <Heading
             fontSize="h1"
             fontWeight="500"
@@ -41,7 +47,7 @@ const BannerSlide = ({ heading, text, button, bgImage }) => {
             {heading}
           </Heading>
 
-          <Text w="md" fontSize="text1">
+          <Text w={{ lg: "lg", xl: "md" }} fontSize="text1">
             {text}
           </Text>
 

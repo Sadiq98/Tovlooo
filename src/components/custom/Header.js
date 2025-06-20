@@ -6,14 +6,18 @@ import {
   Icon,
   Menu,
   Portal,
+  Link,
 } from "@chakra-ui/react";
-import { IoChevronDown } from "react-icons/io5";
+import { Link as RouterLink } from "react-router-dom";
 
+import { IoChevronDown } from "react-icons/io5";
 import { FaGlobe, FaHandshake, FaUserAlt } from "react-icons/fa";
 import { RiShoppingBasketFill } from "react-icons/ri";
-import SingleLink from "./SingleLink";
-import Logo from "../../data/Logo";
 import { languages } from "../../data/language";
+import { lazy } from "react";
+
+const SingleLink = lazy(() => import("./SingleLink"));
+const Logo = lazy(() => import("../../data/Logo"));
 
 const Header = () => {
   const group = useCheckboxGroup({ defaultValue: "English" });
@@ -60,14 +64,19 @@ const Header = () => {
               bg="text.ivory"
               color="text.primary"
               borderRadius="md"
-              _hover={{ bg: "#046B57" }}
+              _hover={{ bg: "text.darkIvory" }}
             >
               Get a custom plugin
             </Button>
 
             <Menu.Root>
               <Menu.Trigger asChild>
-                <Button variant="ghost" color="text.ivory" size="sm">
+                <Button
+                  variant="plain "
+                  _hover={{ color: "text.darkIvory" }}
+                  color="text.ivory"
+                  size="sm"
+                >
                   <FaGlobe /> {selectedLanguage || "Select Language"}{" "}
                   <IoChevronDown />
                 </Button>
@@ -93,9 +102,26 @@ const Header = () => {
               </Portal>
             </Menu.Root>
 
-            <Icon as={FaHandshake} color="text.ivory" boxSize={8} />
-            <Icon as={FaUserAlt} color="text.ivory" boxSize={6} />
-            <Icon as={RiShoppingBasketFill} color="text.ivory" boxSize={8} />
+            <Link as={RouterLink} to="/contact">
+              <Icon
+                as={FaHandshake}
+                color="text.ivory"
+                _hover={{ color: "text.darkIvory" }}
+                boxSize={8}
+              />
+            </Link>
+            <Icon
+              as={FaUserAlt}
+              color="text.ivory"
+              _hover={{ color: "text.darkIvory" }}
+              boxSize={6}
+            />
+            <Icon
+              as={RiShoppingBasketFill}
+              color="text.ivory"
+              _hover={{ color: "text.darkIvory" }}
+              boxSize={8}
+            />
           </Flex>
         </Flex>
       </Flex>

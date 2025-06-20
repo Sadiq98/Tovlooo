@@ -6,9 +6,9 @@ import {
   Image,
   Box,
   Heading,
-  Icon,
   Tabs,
   Wrap,
+  Icon,
 } from "@chakra-ui/react";
 
 import { Suspense, lazy } from "react";
@@ -17,132 +17,29 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
 
-import { MdBlock } from "react-icons/md";
-import { PiPottedPlantFill } from "react-icons/pi";
-import { BsClipboardCheckFill } from "react-icons/bs";
-import { LuBicepsFlexed } from "react-icons/lu";
-import { TbMeat } from "react-icons/tb";
-import { IoPaw } from "react-icons/io5";
+import {
+  bannerContent,
+  tabContent,
+  whyChooseTovlo,
+  bonuses,
+  bowlData,
+  marquee1,
+  marquee2,
+  reviews,
+} from "../data/homescreenData";
 
 const CustomMarquee = lazy(() => import("../components/custom/Marquee"));
 const RichText = lazy(() => import("../components/custom/RichText"));
 const BannerSlide = lazy(() => import("../components/custom/BannerSlide"));
 const CustomButton = lazy(() => import("../components/custom/CustomButton"));
 const CustomTimeline = lazy(() => import("../components/custom/Timeline"));
+const Video = lazy(() => import("../components/custom/Video"));
+const Testimonial = lazy(() => import("../components/custom/Testimonial"));
 const ComparisonTable = lazy(() =>
   import("../components/custom/ComparisonTable")
 );
 
 const HomeScreen = () => {
-  const bannerContent = [
-    {
-      image: "../assets/home_bg_1.jpg",
-      title: "Tovlo crafts high-quality air-dried food...",
-    },
-    {
-      image: "../assets/home_bg_2.png",
-      title: "...made from 100% natural ingredients",
-    },
-    {
-      image: "../assets/home_bg_3.jpg",
-      title: "...so your dog gets the health they deserve",
-    },
-    {
-      image: "../assets/home_bg_4.png",
-      title: "...in every bite",
-    },
-  ];
-
-  const bowlData = [
-    {
-      image: "../assets/Icons/nutrient-dense.png",
-      title: "Nutrient-dense",
-    },
-    {
-      image: "../assets/Icons/no-refrigeration.png",
-      title: "No refrigeration",
-    },
-    {
-      image: "../assets/Icons/flavor-packed.png",
-      title: "Flavor-packed",
-    },
-    {
-      image: "../assets/Icons/travel-ready.png",
-      title: "Travel-ready",
-    },
-  ];
-
-  const tabContent = [
-    {
-      image: "../assets/real_carabeef.png",
-      title: "Real carabeef",
-      description:
-        "A novel protein option, ideal for sensitive stomachs and packed with essential nutrients for a strong and healthy dog",
-    },
-    {
-      image: "../assets/real_chicken.png",
-      title: "Real chicken",
-      description:
-        "A highly digestible and lean protein source, packed with essential amino acids to support muscle development and overall vitality.",
-    },
-    {
-      image: "../assets/lamb.png",
-      title: "Lamb",
-      description:
-        "A highly palatable and nutritious protein source, rich in essential amino acids for muscle development and repair.",
-    },
-    {
-      image: "../assets/shrimp.png",
-      title: "Shrimp",
-      description:
-        "A delicious and nutritious source of protein and antioxidants, supporting a healthy immune system.",
-    },
-    {
-      image: "../assets/real_fish.png",
-      title: "Real fish",
-      description:
-        "Rich in Omega-3 fatty acids for healthy skin and coat, and an excellent source of protein for sustained energy.",
-    },
-  ];
-
-  const whyChooseTovlo = [
-    {
-      image: "../assets/card1.png",
-      title: "Fuel their joy",
-      description:
-        "Watch your dog thrive with balanced, nutrient-rich meals that power every playful moment and happy wag",
-    },
-    {
-      image: "../assets/card2.png",
-      title: "Kind to every tummy",
-      description:
-        "Crafted for easy digestion with light, nourishing ingredients — because a happy tummy means a happy dog",
-    },
-    {
-      image: "../assets/card3.png",
-      title: "Fresh for every adventure",
-      description:
-        "Our naturally air-dried recipes retain all their goodness, so you and your best friend can enjoy them anywhere",
-    },
-  ];
-
-  const advantages = [
-    { icon: PiPottedPlantFill, text: "100% Natural" },
-    { icon: MdBlock, text: "No Fillers" },
-    { icon: BsClipboardCheckFill, text: "Vet-Approved" },
-    { icon: LuBicepsFlexed, text: "75% Protein" },
-    { icon: TbMeat, text: "80-100% Meat" },
-  ];
-
-  const marquee2 = [
-    { icon: IoPaw, text: "Air-Dried Dog Food" },
-    { icon: IoPaw, text: "100% Natural" },
-    { icon: IoPaw, text: "Loved by Dogs" },
-    { icon: IoPaw, text: "Vet Approved" },
-    { icon: IoPaw, text: "Healthy Ingredients" },
-    { icon: IoPaw, text: "Tovlo" },
-  ];
-
   return (
     <>
       {/* Banner */}
@@ -172,7 +69,7 @@ const HomeScreen = () => {
       </Box>
 
       {/* Marquee */}
-      <CustomMarquee data={advantages} />
+      <CustomMarquee data={marquee1} />
 
       {/* Scientifically Designed */}
       <Stack px={5} py={20}>
@@ -467,6 +364,16 @@ const HomeScreen = () => {
             </Text>
           </Stack>
           <CustomButton>Let's do this</CustomButton>
+
+          <Flex gap={3} w="lg" wrap="wrap" justifyContent="center">
+            {bonuses.map((item, index) => (
+              <Flex gap={2} alignItems="center" key={index}>
+                <Icon as={item.icon} />
+                <Text fontSize="text8">{item.text}</Text>
+              </Flex>
+            ))}
+          </Flex>
+          <Video />
         </Stack>
       </Box>
 
@@ -486,6 +393,26 @@ const HomeScreen = () => {
             text="What those who have already chosen us are saying"
             width="3xl"
           />
+
+          <Box w="full">
+            <Swiper
+              loop={true}
+              // modules={[Autoplay]}
+              // autoplay={{
+              //   delay: 3000,
+              //   disableOnInteraction: false,
+              // }}
+              slidesPerView={1.5}
+              spaceBetween={20}
+              className="testimonialSwiper"
+            >
+              {reviews.map((review, index) => (
+                <SwiperSlide>
+                  <Testimonial {...review} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </Box>
         </Stack>
       </Box>
 

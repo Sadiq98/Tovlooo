@@ -18,7 +18,9 @@ const CustomButton = ({ children, onClick, ...props }) => {
       bgColor="text.primary"
       color="text.ivory"
       _hover={{
+        bgColor: "text.darkGreen1",
         "&::after": {
+          borderColor: "text.darkGreen1",
           transform: "translate(7px, 7px)",
         },
       }}
