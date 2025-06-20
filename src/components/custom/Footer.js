@@ -113,6 +113,7 @@ const Footer = () => {
             <Flex gap={5}>
               {socials.map((item, index) => (
                 <Link
+                  href={item.url}
                   bgColor="text.ivory"
                   key={index}
                   borderRadius="full"
