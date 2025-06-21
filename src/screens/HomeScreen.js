@@ -11,7 +11,7 @@ import {
   Icon,
 } from "@chakra-ui/react";
 
-import { Suspense, lazy } from "react";
+import { lazy } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -72,12 +72,12 @@ const HomeScreen = () => {
       <CustomMarquee data={marquee1} />
 
       {/* Scientifically Designed */}
-      <Stack px={5} py={20}>
+      <Stack px={{ base: 0, lg: 5 }} py={20}>
         <Stack
           bgColor="custom.green"
-          borderRadius="xl"
+          borderRadius={{ base: "none", lg: "xl" }}
           alignItems="center"
-          p={5}
+          p={{ base: 10, lg: 5 }}
           position="relative"
         >
           <RichText
@@ -88,14 +88,14 @@ const HomeScreen = () => {
           <Image
             src="../assets/foodBowl.png"
             alt="foodBowl"
-            boxSize="500px"
+            boxSize={{ base: "300px", md: "500px" }}
             zIndex={1}
           />
           <Grid
             templateColumns={"repeat(2, 1fr)"}
-            position="absolute"
-            w={"80%"}
-            gap={40}
+            position={{ base: "none", lg: "absolute" }}
+            w={{ base: "auto", lg: "80%" }}
+            gap={{ base: 10, md: 20, lg: 40 }}
             top="30%"
           >
             {bowlData.map((item, index) => (
@@ -104,8 +104,14 @@ const HomeScreen = () => {
                 alignItems="center"
                 justifySelf={index % 2 === 0 ? "start" : "end"}
               >
-                <Image src={item.image} boxSize={10} />
-                <Heading fontWeight="normal" fontSize="h6">
+                <Image
+                  src={item.image}
+                  boxSize={{ base: 14, md: 20, lg: 10 }}
+                />
+                <Heading
+                  fontWeight="normal"
+                  fontSize={{ base: "lg", md: "h5", lg: "h6" }}
+                >
                   {item.title}
                 </Heading>
               </Stack>
@@ -117,6 +123,7 @@ const HomeScreen = () => {
             gap={50}
             w={"full"}
             top="20%"
+            display={{ base: "none", lg: "grid" }}
           >
             <Image justifySelf="end" src="../assets/Icons/line1.svg" w="60%" />
             <Image
@@ -131,6 +138,7 @@ const HomeScreen = () => {
             gap={50}
             w={"full"}
             bottom="10%"
+            display={{ base: "none", lg: "grid" }}
           >
             <Image justifySelf="end" src="../assets/Icons/line3.svg" w="60%" />
             <Image
@@ -158,22 +166,27 @@ const HomeScreen = () => {
       </Stack>
 
       {/* Starter Box */}
-      <Box p={5}>
+      <Box p={{ base: 0, lg: 5 }}>
         <Stack
           gap={10}
           py={10}
-          px={5}
+          px={{ base: 0, lg: 5 }}
           bgColor="background.ivory"
           border="1px solid "
           borderColor="text.lightGreen50"
-          borderRadius="4xl"
+          borderRadius={{ base: "none", lg: "4xl" }}
           alignItems="center"
         >
           <RichText text="Start Their Journey to Better Health" />
 
           {/* Packages */}
-          <Flex alignItems="center" gap={3}>
-            <Stack alignItems="center">
+          <Flex
+            alignItems="center"
+            justifyContent="center"
+            gap={3}
+            wrap={{ base: "wrap", lg: "nowrap" }}
+          >
+            <Stack alignItems="center" w={{ base: "100vw", lg: "auto" }}>
               <Image
                 src="../assets/starter_box.png"
                 bgColor="text.darkIvory"
@@ -184,7 +197,13 @@ const HomeScreen = () => {
               <Heading fontSize="h6">Beautiful Starter Box</Heading>
             </Stack>
 
-            <Heading fontSize="h3">=</Heading>
+            <Heading
+              fontSize="h3"
+              textAlign="center"
+              w={{ base: "100vw", lg: "auto" }}
+            >
+              =
+            </Heading>
 
             <Stack alignItems="center">
               <Image
@@ -192,8 +211,8 @@ const HomeScreen = () => {
                 bgColor="text.darkIvory"
                 borderRadius="2xl"
                 p={5}
-                h="400px"
-                w="300px"
+                h={{ base: "300px", lg: "400px" }}
+                w={{ base: "200px", lg: "300px" }}
               />
               <Heading fontSize="h6">Chicken choice- 70g</Heading>
             </Stack>
@@ -206,8 +225,8 @@ const HomeScreen = () => {
                 bgColor="text.darkIvory"
                 borderRadius="2xl"
                 p={5}
-                h="400px"
-                w="300px"
+                h={{ base: "300px", lg: "400px" }}
+                w={{ base: "200px", lg: "300px" }}
               />
               <Heading fontSize="h6">Fish fantasy- 70g</Heading>
             </Stack>
@@ -220,8 +239,8 @@ const HomeScreen = () => {
                 bgColor="text.darkIvory"
                 borderRadius="2xl"
                 p={5}
-                h="400px"
-                w="300px"
+                h={{ base: "300px", lg: "400px" }}
+                w={{ base: "200px", lg: "300px" }}
               />
               <Heading fontSize="h6">Meaty marvel-70g</Heading>
             </Stack>
@@ -229,7 +248,7 @@ const HomeScreen = () => {
 
           <RichText
             text="The perfect introduction to the Tovlo way — your Starter Pack awaits"
-            width="4xl"
+            width={{ base: "3xl", lg: "4xl" }}
             textTransform="none"
           />
           <CustomButton>Try the starter pack</CustomButton>
@@ -237,19 +256,19 @@ const HomeScreen = () => {
       </Box>
 
       {/* Ingredients TAB */}
-      <Box px={5} py={20}>
+      <Box px={{ base: 0, lg: 5 }} py={20}>
         <Stack
           bgColor="text.primary"
-          borderRadius="4xl"
+          borderRadius={{ base: "none", lg: "4xl" }}
           alignItems="center"
-          p={10}
+          p={{ base: 5, lg: 10 }}
           gap={10}
         >
           <RichText text="Our Ingredients" color="text.ivory" />
           <Tabs.Root
             defaultValue={tabContent[0].title}
             variant="plain"
-            w="80%"
+            w={{ base: "100%", lg: "80%" }}
             justifyItems="center"
           >
             <Tabs.List bgColor="transparent" p="1">
@@ -263,7 +282,7 @@ const HomeScreen = () => {
                     borderRadius="lg"
                     fontFamily="heading"
                     fontSize="h5"
-                    px={20}
+                    px={{ base: 10, lg: 20 }}
                     py={6}
                     color="text.ivory"
                     _selected={{ bg: "text.ivory", color: "text.primary" }}
@@ -308,7 +327,7 @@ const HomeScreen = () => {
       </Box>
 
       {/* WHY PET PARENTS CHOOSE TOVLO */}
-      <Box p={5} py={10}>
+      <Box p={{ base: 0, lg: 5 }} py={10}>
         <Stack
           gap={10}
           py={10}
@@ -316,20 +335,24 @@ const HomeScreen = () => {
           bgColor="background.ivory"
           border="1px solid "
           borderColor="text.lightGreen50"
-          borderRadius="4xl"
+          borderRadius={{ base: "none", lg: "4xl" }}
           alignItems="center"
         >
           <RichText text="Why Pet Parents Choose Tovlo" width="full" />
-          <Grid templateColumns="repeat(3, 1fr)" gap={10}>
+          <Grid templateColumns="repeat(3, 1fr)" gap={{ base: 5, lg: 10 }}>
             {whyChooseTovlo.map((item, index) => (
               <Stack gap={5} key={index}>
                 <Image
                   src={item.image}
                   borderRadius="lg"
                   boxShadow="4px 4px 8px 0px rgba(0, 0, 0, 0.10)"
-                  h="350px"
+                  h={{ base: "300px", lg: "350px" }}
                 />
-                <Stack gap={2} textAlign="center" w="90%">
+                <Stack
+                  gap={2}
+                  textAlign="center"
+                  w={{ base: "95%", lg: "90%" }}
+                >
                   <Heading fontSize="h6" fontWeight="bold">
                     {item.title}
                   </Heading>
@@ -342,7 +365,7 @@ const HomeScreen = () => {
       </Box>
 
       {/* BECOME PART OF TOVLO FAMILY */}
-      <Box p={5} py={20}>
+      <Box p={{ base: 0, lg: 5 }} py={20}>
         <Stack
           gap={5}
           py={10}
@@ -350,15 +373,18 @@ const HomeScreen = () => {
           bgColor="background.ivory"
           border="1px solid "
           borderColor="text.lightGreen50"
-          borderRadius="4xl"
+          borderRadius={{ base: "none", lg: "4xl" }}
           alignItems="center"
         >
-          <RichText text="Become a Part of the Tovlo Family" width="full" />
-          <Stack gap={5} textAlign="center" w="lg">
-            <Heading fontSize="h4" fontWeight="bold">
+          <RichText
+            text="Become a Part of the Tovlo Family"
+            width={{ base: "xl", lg: "full" }}
+          />
+          <Stack gap={5} textAlign="center" w={{ base: "md", lg: "lg" }}>
+            <Heading fontSize={{ base: "h5", lg: "h4" }} fontWeight="bold">
               Ready to share the love?
             </Heading>
-            <Text fontSize="text1">
+            <Text fontSize={{ base: "text6", lg: "text1" }}>
               Join a movement of passionate pet parents. We’re building more
               than a brand — we’re building a community.
             </Text>
@@ -378,7 +404,7 @@ const HomeScreen = () => {
       </Box>
 
       {/* REVIEWS */}
-      <Box p={5} py={10}>
+      <Box p={{ base: 0, lg: 5 }} py={10}>
         <Stack
           gap={5}
           py={10}
@@ -386,7 +412,7 @@ const HomeScreen = () => {
           bgColor="background.ivory"
           border="1px solid "
           borderColor="text.lightGreen50"
-          borderRadius="4xl"
+          borderRadius={{ base: "none", lg: "4xl" }}
           alignItems="center"
         >
           <RichText

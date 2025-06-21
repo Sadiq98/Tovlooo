@@ -1,5 +1,5 @@
 import { Box, Stack, Heading, Text } from "@chakra-ui/react";
-import { Suspense, lazy } from "react";
+import { lazy } from "react";
 
 const CustomButton = lazy(() => import("./CustomButton"));
 
@@ -11,14 +11,14 @@ const BannerSlide = ({ heading, text, button, bgImage }) => {
         bgImage={`url(${bgImage})`}
         bgSize="cover"
         bgRepeat="no-repeat"
-        bgPosition="center"
+        bgPos={{ base: "center", lg: "initial" }}
         w="full"
         display="flex"
         alignItems="center"
         justifyContent="start"
         position="relative"
-        height={{ base: "800px", md: "100vh" }}
-        px={5}
+        height={{ base: "100vh", md: "50vh", lg: "100vh" }}
+        px={{ base: 0, md: 5 }}
         py={8}
       >
         {/* Black Overlay */}
@@ -34,22 +34,31 @@ const BannerSlide = ({ heading, text, button, bgImage }) => {
         {/* Text */}
         <Stack
           gap="10"
+          h={{ base: "full", md: "full", lg: "auto" }}
+          justifyContent={{ base: "end", md: "space-around" }}
+          pb={{ base: 20, md: 0 }}
           color="text.ivory"
           position="relative"
-          w={{ base: "lg", md: "2xl", lg: "2xl", xl: "4xl" }}
+          w={{ base: "sm", md: "2xl", lg: "2xl", xl: "5xl" }}
+          alignItems={{ base: "center", md: "flex-start" }}
         >
-          <Heading
-            fontSize="h1"
-            fontWeight="500"
-            lineHeight="shorter"
-            textTransform="uppercase"
-          >
-            {heading}
-          </Heading>
+          <Stack gap="10" textAlign={{ base: "center", md: "left" }}>
+            <Heading
+              fontSize={{ base: "h5", md: "h1" }}
+              fontWeight="500"
+              lineHeight="shorter"
+              textTransform="uppercase"
+            >
+              {heading}
+            </Heading>
 
-          <Text w={{ lg: "lg", xl: "md" }} fontSize="text1">
-            {text}
-          </Text>
+            <Text
+              w={{ base: "full", md: "md", lg: "lg", xl: "md" }}
+              fontSize={{ base: "text6", md: "text1" }}
+            >
+              {text}
+            </Text>
+          </Stack>
 
           <CustomButton>{button}</CustomButton>
         </Stack>

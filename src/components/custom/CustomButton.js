@@ -6,10 +6,15 @@ const CustomButton = ({ children, onClick, ...props }) => {
     <Button
       onClick={onClick}
       position="relative"
-      size="xl"
+      fontSize={{
+        base: "buttonSecondaryOval",
+        md: "buttonPrimary",
+        lg: "buttonMenuItem",
+      }}
+      size="5xl"
       width="fit-content"
       borderRadius="8px"
-      px={40}
+      px={{ base: 20, md: 40 }}
       py={5}
       fontWeight="500"
       lineHeight="button"

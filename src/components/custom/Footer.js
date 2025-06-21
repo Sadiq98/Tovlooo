@@ -58,12 +58,50 @@ const Footer = () => {
 
   return (
     <>
-      <Stack px={5} py={10} bgColor="text.primary" gap={10} alignItems="center">
+      <Stack
+        px={5}
+        py={10}
+        bgColor="text.primary"
+        gap={10}
+        alignItems={{ base: "start", lg: "center" }}
+      >
         <Logo fill="#FBFFDC" width="250" height="auto" />
-        <Grid templateColumns="repeat(3, 1fr)" w="full" gap={52}>
+        <Grid
+          templateColumns={{
+            base: "repeat(1, 1fr)",
+            md: "repeat(2, 1fr)",
+            lg: "repeat(3, 1fr)",
+          }}
+          w="full"
+          gap={{ base: 10, md: 40, lg: 52 }}
+        >
           {/* 1st Column */}
-          <Stack>
-            <List.Root variant="plain" gap={2}>
+          <Stack gap={10}>
+            <Stack gap={3} display={{ base: "flex", lg: "none" }}>
+              <Heading
+                fontSize="text1"
+                color="text.ivory"
+                fontWeight="normal"
+                textTransform="uppercase"
+              >
+                Get The Tovlo Paper
+              </Heading>
+              <InputGroup
+                endElement={<GoArrowUpRight size={32} />}
+                _icon={{ color: "text.ivory" }}
+              >
+                <Input
+                  borderRadius="lg"
+                  size="xl"
+                  border="2px solid"
+                  borderColor="text.ivory"
+                  placeholder="Email address"
+                  _placeholder={{ color: "text.ivory" }}
+                  color="text.ivory"
+                />
+              </InputGroup>
+            </Stack>
+            <Stack gap={2}>
               <Heading
                 fontSize="text1"
                 color="text.ivory"
@@ -72,20 +110,32 @@ const Footer = () => {
               >
                 Navigation
               </Heading>
-              {navigation.map((item, index) => (
-                <List.Item key={index}>
-                  <SingleLink
-                    label={item.label}
-                    url={item.link}
-                    fontSize="text3"
-                  />
-                </List.Item>
-              ))}
-            </List.Root>
+              <List.Root
+                variant="plain"
+                gap={2}
+                flexWrap="wrap"
+                h={{ base: "150px", lg: "auto" }}
+              >
+                {navigation.map((item, index) => (
+                  <List.Item key={index}>
+                    <SingleLink
+                      label={item.label}
+                      url={item.link}
+                      fontSize="text3"
+                    />
+                  </List.Item>
+                ))}
+              </List.Root>
+            </Stack>
           </Stack>
 
           {/* 2nd Column */}
-          <Stack alignItems="center" justifyContent="space-between" gap={3}>
+          <Stack
+            alignItems="center"
+            justifyContent="space-between"
+            gap={3}
+            display={{ base: "none", lg: "flex" }}
+          >
             <Stack gap={3} alignItems="center">
               <Heading
                 fontSize="text1"
@@ -131,7 +181,7 @@ const Footer = () => {
           </Stack>
 
           {/* 3nd Column */}
-          <Stack gap={3}>
+          <Stack gap={5}>
             <Heading
               fontSize="text1"
               color="text.ivory"
@@ -163,6 +213,25 @@ const Footer = () => {
               </Text>
               <Text>Phone support coming soon!</Text>
             </Stack>
+
+            <Flex gap={5} display={{ base: "flex", lg: "none" }}>
+              {socials.map((item, index) => (
+                <Link
+                  href={item.url}
+                  bgColor="text.ivory"
+                  key={index}
+                  borderRadius="full"
+                  p={1}
+                >
+                  <Icon
+                    as={item.icon}
+                    color="text.primary"
+                    boxSize={8}
+                    key={index}
+                  />
+                </Link>
+              ))}
+            </Flex>
           </Stack>
         </Grid>
       </Stack>

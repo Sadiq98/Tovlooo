@@ -26,6 +26,7 @@ const FooterBar = () => {
   return (
     <>
       <Flex
+        direction={{ base: "column", md: "row" }}
         alignItems="center"
         justifyContent="space-between"
         color="text.primary"

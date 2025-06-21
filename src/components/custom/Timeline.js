@@ -31,11 +31,15 @@ const timelineSteps = [
 ];
 
 const TimelineData = ({ heading, text }) => (
-  <Stack gap={5} width="sm">
-    <Heading fontSize="h3" lineHeight="heading2">
+  <Stack gap={5} width={{ base: "xs", lg: "sm" }}>
+    <Heading fontSize={{ base: "h5", lg: "h3" }} lineHeight="heading2">
       {heading}
     </Heading>
-    <Text fontSize="text3" fontWeight="normal" lineHeight="text1">
+    <Text
+      fontSize={{ base: "text1", lg: "text3" }}
+      fontWeight="normal"
+      lineHeight="text1"
+    >
       {text}
     </Text>
     <Separator size="md" colorPalette="teal" />

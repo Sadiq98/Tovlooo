@@ -12,7 +12,7 @@ const Testimonial = ({ image, name, review, rating }) => {
       >
         <Image
           src={image}
-          h="400px"
+          h={{ base: "400px", lg: "400px" }}
           w="full"
           objectFit="cover"
           borderRadius="xl"
@@ -21,7 +21,7 @@ const Testimonial = ({ image, name, review, rating }) => {
         />
         <Stack
           justifyContent="space-between"
-          p={10}
+          p={{ base: 5, lg: 10 }}
           h="full"
           bgColor="text.primary"
           color="text.ivory"
@@ -29,9 +29,11 @@ const Testimonial = ({ image, name, review, rating }) => {
         >
           <Stack>
             <Rating value={rating} />
-            <Heading fontSize="h5">{name}</Heading>
+            <Heading fontWeight="normal" fontSize={{ base: "text1", lg: "h5" }}>
+              {name}
+            </Heading>
           </Stack>
-          <Text fontSize="text6">{review}</Text>
+          <Text fontSize={{ base: "text8", lg: "text6" }}>{review}</Text>
         </Stack>
         <Image
           src="../assets/testimonial_star.png"

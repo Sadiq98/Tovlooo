@@ -1,4 +1,4 @@
-import { Flex, Text, Icon, Box, Heading } from "@chakra-ui/react";
+import { Flex, Icon, Box, Heading } from "@chakra-ui/react";
 import Marquee from "react-fast-marquee";
 
 const CustomMarquee = ({ data }) => {
@@ -10,7 +10,7 @@ const CustomMarquee = ({ data }) => {
             <Icon color="text.primary" as={IconComponent} boxSize={10} />
             <Heading
               color="text.primary"
-              fontSize="text4"
+              fontSize={{ base: "text3", md: "text5", lg: "text4" }}
               fontWeight="semibold"
             >
               {text}

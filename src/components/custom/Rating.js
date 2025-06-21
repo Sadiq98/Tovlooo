@@ -1,5 +1,4 @@
-import { Box, Flex, Icon, Text } from "@chakra-ui/react";
-import { IoStar, IoStarHalf, IoStarOutline } from "react-icons/io5";
+import { Flex, Icon, Text } from "@chakra-ui/react";
 import { PiStarFill, PiStarBold, PiStarHalfFill } from "react-icons/pi";
 
 const Rating = ({
@@ -17,7 +16,7 @@ const Rating = ({
           as={
             value >= 1 ? PiStarFill : value >= 0.5 ? PiStarHalfFill : PiStarBold
           }
-          boxSize={8}
+          boxSize={{ base: 6, lg: 8 }}
           {...props}
         />
         <Icon
@@ -25,7 +24,7 @@ const Rating = ({
           as={
             value >= 2 ? PiStarFill : value >= 1.5 ? PiStarHalfFill : PiStarBold
           }
-          boxSize={8}
+          boxSize={{ base: 6, lg: 8 }}
           {...props}
         />
         <Icon
@@ -33,7 +32,7 @@ const Rating = ({
           as={
             value >= 3 ? PiStarFill : value >= 2.5 ? PiStarHalfFill : PiStarBold
           }
-          boxSize={8}
+          boxSize={{ base: 6, lg: 8 }}
           {...props}
         />
         <Icon
@@ -41,7 +40,7 @@ const Rating = ({
           as={
             value >= 4 ? PiStarFill : value >= 3.5 ? PiStarHalfFill : PiStarBold
           }
-          boxSize={8}
+          boxSize={{ base: 6, lg: 8 }}
           {...props}
         />
         <Icon
@@ -49,7 +48,7 @@ const Rating = ({
           as={
             value >= 5 ? PiStarFill : value >= 4.5 ? PiStarHalfFill : PiStarBold
           }
-          boxSize={8}
+          boxSize={{ base: 6, lg: 8 }}
           {...props}
         />
       </Flex>
