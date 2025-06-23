@@ -46,24 +46,27 @@ const ComparisonTable = () => {
   ];
   return (
     <>
-      <Table.Root fontFamily="heading" fontSize="h6">
+      <Table.Root fontFamily="heading" fontSize={{ base: "text8", md: "h6" }}>
         <Table.Header>
           <Table.Row bgColor="background.default">
             <Table.ColumnHeader border="none"></Table.ColumnHeader>
             <Table.ColumnHeader
-              fontSize="h5"
+              fontSize={{ base: "text6", md: "h5" }}
               border="none"
               py={10}
               textAlign="center"
               color="text.primary"
             >
               <Stack alignItems="center">
-                <Image src="/assets/table_frozen.png" boxSize="100px" />
+                <Image
+                  src="/assets/table_frozen.png"
+                  boxSize={{ base: "60px", md: "100px" }}
+                />
                 Frozen Food
               </Stack>
             </Table.ColumnHeader>
             <Table.ColumnHeader
-              fontSize="h5"
+              fontSize={{ base: "text6", md: "h5" }}
               border="none"
               borderTopRadius="4xl"
               py={10}
@@ -72,20 +75,27 @@ const ComparisonTable = () => {
               color="text.ivory"
             >
               <Stack alignItems="center">
-                <Image src="/assets/table_frozen.png" boxSize="100px" />
-                <Logo />
+                <Image
+                  src="/assets/table_frozen.png"
+                  boxSize={{ base: "60px", md: "100px" }}
+                />
+                <Logo display={{ base: "none", md: "block" }} />
+                <Logo width="80" height="20" />
                 Air-dried Food
               </Stack>
             </Table.ColumnHeader>
             <Table.ColumnHeader
-              fontSize="h5"
+              fontSize={{ base: "text6", md: "h5" }}
               border="none"
               py={10}
               textAlign="center"
               color="text.primary"
             >
               <Stack alignItems="center">
-                <Image src="/assets/table_dry.png" boxSize="100px" />
+                <Image
+                  src="/assets/table_dry.png"
+                  boxSize={{ base: "60px", md: "100px" }}
+                />
                 Dry Food
               </Stack>
             </Table.ColumnHeader>
@@ -109,7 +119,7 @@ const ComparisonTable = () => {
                 <Icon
                   as={item.frozen ? FaRegThumbsUp : FaRegThumbsDown}
                   color={item.frozen ? "text.primary" : "text.orange"}
-                  boxSize={10}
+                  boxSize={{ base: 6, md: 10 }}
                 />
               </Table.Cell>
 
@@ -117,7 +127,6 @@ const ComparisonTable = () => {
               <Table.Cell
                 py={10}
                 border="1px solid"
-                borderColor="background.lightGreen"
                 borderBottomRadius={
                   index === tableData.length - 1 ? "40px" : ""
                 }
@@ -125,7 +134,11 @@ const ComparisonTable = () => {
                 color="text.ivory"
                 textAlign="center"
               >
-                <Icon as={SlCheck} boxSize={10} color="text.ivory" />
+                <Icon
+                  as={SlCheck}
+                  boxSize={{ base: 6, md: 10 }}
+                  color="text.ivory"
+                />
               </Table.Cell>
 
               {/* Dry Food */}
@@ -138,7 +151,7 @@ const ComparisonTable = () => {
                 <Icon
                   as={item.dry ? FaRegThumbsUp : FaRegThumbsDown}
                   color={item.frozen ? "text.primary" : "text.orange"}
-                  boxSize={10}
+                  boxSize={{ base: 6, md: 10 }}
                 />
               </Table.Cell>
             </Table.Row>

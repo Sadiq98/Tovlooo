@@ -5,6 +5,7 @@ import { useEffect, lazy } from "react";
 import Header from "./components/custom/Header";
 import Footer from "./components/custom/Footer";
 import { Flex } from "@chakra-ui/react";
+import { FloatingWhatsApp } from "react-floating-whatsapp";
 
 const HomeScreen = lazy(() => import("./screens/HomeScreen"));
 
@@ -20,6 +21,16 @@ const App = () => {
   }, []);
   return (
     <BrowserRouter>
+      <FloatingWhatsApp
+        accountName="Tovlo"
+        phoneNumber="919152832898"
+        statusMessage="Online"
+        allowClickAway={true}
+        allowEsc={true}
+        chatboxStyle={{ color: "#017D65" }}
+        // buttonStyle={{ background: "#FBFFDC" }}
+      />
+
       <Header />
       <Flex direction="column" as="main" color="text.primary">
         <Routes>

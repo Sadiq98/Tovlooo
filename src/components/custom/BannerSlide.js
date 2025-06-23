@@ -17,7 +17,7 @@ const BannerSlide = ({ heading, text, button, bgImage }) => {
         alignItems="center"
         justifyContent="start"
         position="relative"
-        height={{ base: "100vh", md: "50vh", lg: "100vh" }}
+        height={{ base: "100vh", md: "70vh", lg: "100vh" }}
         px={{ base: 0, md: 5 }}
         py={8}
       >
@@ -36,7 +36,7 @@ const BannerSlide = ({ heading, text, button, bgImage }) => {
           gap="10"
           h={{ base: "full", md: "full", lg: "auto" }}
           justifyContent={{ base: "end", md: "space-around" }}
-          pb={{ base: 20, md: 0 }}
+          pb={{ base: 40, md: 0 }}
           color="text.ivory"
           position="relative"
           w={{ base: "sm", md: "2xl", lg: "2xl", xl: "5xl" }}

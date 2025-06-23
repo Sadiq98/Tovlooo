@@ -2,7 +2,7 @@ import { Heading, Box } from "@chakra-ui/react";
 
 const RichText = ({
   text,
-  width = { base: "full", md: "2xl" },
+  width = { base: "100%", md: "2xl" },
   fontSize = { base: "h6", md: "h4" },
   color = "text.primary",
   italicWords = [],

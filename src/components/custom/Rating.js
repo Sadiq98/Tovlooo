@@ -5,7 +5,7 @@ const Rating = ({
   value,
   text,
   color = "text.orange",
-  gap = "2",
+  gap = { base: "1", md: "2" },
   ...props
 }) => {
   return (
@@ -16,7 +16,7 @@ const Rating = ({
           as={
             value >= 1 ? PiStarFill : value >= 0.5 ? PiStarHalfFill : PiStarBold
           }
-          boxSize={{ base: 6, lg: 8 }}
+          boxSize={{ base: 5, md: 6, lg: 8 }}
           {...props}
         />
         <Icon
@@ -24,7 +24,7 @@ const Rating = ({
           as={
             value >= 2 ? PiStarFill : value >= 1.5 ? PiStarHalfFill : PiStarBold
           }
-          boxSize={{ base: 6, lg: 8 }}
+          boxSize={{ base: 5, md: 6, lg: 8 }}
           {...props}
         />
         <Icon
@@ -32,7 +32,7 @@ const Rating = ({
           as={
             value >= 3 ? PiStarFill : value >= 2.5 ? PiStarHalfFill : PiStarBold
           }
-          boxSize={{ base: 6, lg: 8 }}
+          boxSize={{ base: 5, md: 6, lg: 8 }}
           {...props}
         />
         <Icon
@@ -40,7 +40,7 @@ const Rating = ({
           as={
             value >= 4 ? PiStarFill : value >= 3.5 ? PiStarHalfFill : PiStarBold
           }
-          boxSize={{ base: 6, lg: 8 }}
+          boxSize={{ base: 5, md: 6, lg: 8 }}
           {...props}
         />
         <Icon
@@ -48,7 +48,7 @@ const Rating = ({
           as={
             value >= 5 ? PiStarFill : value >= 4.5 ? PiStarHalfFill : PiStarBold
           }
-          boxSize={{ base: 6, lg: 8 }}
+          boxSize={{ base: 5, md: 6, lg: 8 }}
           {...props}
         />
       </Flex>

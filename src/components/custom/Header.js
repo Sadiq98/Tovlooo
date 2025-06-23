@@ -59,7 +59,7 @@ const Header = () => {
         as="header"
         position="absolute"
         top="0"
-        p={5}
+        p={{ base: 3, md: 5 }}
         zIndex="10"
         w="full"
         justifyContent="center"
@@ -70,7 +70,7 @@ const Header = () => {
           justify="space-between"
           align="center"
           py={3}
-          px={5}
+          px={{ base: 3, md: 5 }}
           borderRadius="lg"
           border="2px solid"
           borderColor="text.ivory"
@@ -93,7 +93,8 @@ const Header = () => {
             }}
             _focus={{ outline: "none" }}
           >
-            <Logo />
+            <Logo display={{ base: "none", md: "block" }} />
+            <Logo width="120" height="20" />
           </Link>
 
           {/* Right Side */}
@@ -164,21 +165,25 @@ const Header = () => {
           </Flex>
 
           {/* Mobile Drawer */}
-          <Flex align="center" gap={5} display={{ base: "flex", lg: "none" }}>
+          <Flex
+            align="center"
+            gap={{ base: 3, md: 5 }}
+            display={{ base: "flex", lg: "none" }}
+          >
             <Icon
               as={RiShoppingBasketFill}
               color="text.ivory"
               _hover={{ color: "text.darkIvory" }}
-              boxSize={{ base: "10", md: "12" }}
+              boxSize={{ base: "6", md: "12" }}
             />
 
-            <Drawer.Root size={{ base: "full", md: "md" }}>
+            <Drawer.Root size="md">
               <Drawer.Trigger asChild>
                 <IconButton bgColor="transparent">
                   <Icon
                     as={IoMenu}
                     color="text.ivory"
-                    boxSize={{ base: "10", md: "12" }}
+                    boxSize={{ base: "6", md: "12" }}
                   />
                 </IconButton>
               </Drawer.Trigger>

@@ -31,12 +31,15 @@ const timelineSteps = [
 ];
 
 const TimelineData = ({ heading, text }) => (
-  <Stack gap={5} width={{ base: "xs", lg: "sm" }}>
-    <Heading fontSize={{ base: "h5", lg: "h3" }} lineHeight="heading2">
+  <Stack gap={5} width={{ base: "5xs", md: "xs", lg: "sm" }}>
+    <Heading
+      fontSize={{ base: "text6", md: "h5", lg: "h3" }}
+      lineHeight="heading2"
+    >
       {heading}
     </Heading>
     <Text
-      fontSize={{ base: "text1", lg: "text3" }}
+      fontSize={{ base: "text8", md: "text1", lg: "text3" }}
       fontWeight="normal"
       lineHeight="text1"
     >
@@ -62,14 +65,14 @@ const CustomTimeline = () => {
                     <TimelineData heading={step.heading} text={step.text} />
                   </Timeline.Title>
                 </Timeline.Content>
-                <Timeline.Connector px={5}>
+                <Timeline.Connector px={{ base: 2, md: 5 }}>
                   <Timeline.Separator display={isLast ? "block" : undefined} />
                 </Timeline.Connector>
                 <Timeline.Content>
                   <Timeline.Title>
                     <Image
                       src={step.image}
-                      boxSize="600px"
+                      boxSize={{ base: "350px", md: "600px" }}
                       objectFit="contain"
                       alt={step.heading}
                     />
@@ -82,13 +85,13 @@ const CustomTimeline = () => {
                   <Timeline.Title>
                     <Image
                       src={step.image}
-                      boxSize="600px"
+                      boxSize={{ base: "350px", md: "600px" }}
                       objectFit="contain"
                       alt={step.heading}
                     />
                   </Timeline.Title>
                 </Timeline.Content>
-                <Timeline.Connector px={5}>
+                <Timeline.Connector px={{ base: 2, md: 5 }}>
                   <Timeline.Separator display={isLast ? "block" : undefined} />
                 </Timeline.Connector>
                 <Timeline.Content>

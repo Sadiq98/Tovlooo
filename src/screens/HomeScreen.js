@@ -77,13 +77,13 @@ const HomeScreen = () => {
           bgColor="custom.green"
           borderRadius={{ base: "none", lg: "xl" }}
           alignItems="center"
-          p={{ base: 10, lg: 5 }}
+          p={{ base: 5, md: 10, lg: 5 }}
           position="relative"
         >
           <RichText
             text="Scientifically Designed Loved by Dogs"
             color="text.ivory"
-            width="xl"
+            width={{ base: "full", md: "xl" }}
           />
           <Image
             src="../assets/foodBowl.png"
@@ -151,10 +151,10 @@ const HomeScreen = () => {
       </Stack>
 
       {/* Table */}
-      <Stack alignItems="center" px={5} gap={10}>
+      <Stack alignItems="center" px={{ base: 2, md: 5 }} gap={10}>
         <RichText
           text="Why settle for less? Discover the real difference with Tovlo"
-          width="3xl"
+          width={{ base: "full", md: "3xl" }}
         />
         <ComparisonTable />
       </Stack>
@@ -183,7 +183,7 @@ const HomeScreen = () => {
           <Flex
             alignItems="center"
             justifyContent="center"
-            gap={3}
+            gap={{ base: 1, md: 3 }}
             wrap={{ base: "wrap", lg: "nowrap" }}
           >
             <Stack alignItems="center" w={{ base: "100vw", lg: "auto" }}>
@@ -192,9 +192,11 @@ const HomeScreen = () => {
                 bgColor="text.darkIvory"
                 borderRadius="2xl"
                 p={5}
-                boxSize="500px"
+                boxSize={{ base: "300px", md: "500px" }}
               />
-              <Heading fontSize="h6">Beautiful Starter Box</Heading>
+              <Heading fontSize={{ base: "text6", md: "h6" }}>
+                Beautiful Starter Box
+              </Heading>
             </Stack>
 
             <Heading
@@ -211,13 +213,15 @@ const HomeScreen = () => {
                 bgColor="text.darkIvory"
                 borderRadius="2xl"
                 p={5}
-                h={{ base: "300px", lg: "400px" }}
-                w={{ base: "200px", lg: "300px" }}
+                h={{ base: "200px", md: "300px", lg: "400px" }}
+                w={{ base: "100px", md: "200px", lg: "300px" }}
               />
-              <Heading fontSize="h6">Chicken choice- 70g</Heading>
+              <Heading fontSize={{ base: "xs", md: "h6" }}>
+                Chicken choice- 70g
+              </Heading>
             </Stack>
 
-            <Heading fontSize="h3">+</Heading>
+            <Heading fontSize={{ base: "h6", md: "h3" }}>+</Heading>
 
             <Stack alignItems="center">
               <Image
@@ -225,13 +229,15 @@ const HomeScreen = () => {
                 bgColor="text.darkIvory"
                 borderRadius="2xl"
                 p={5}
-                h={{ base: "300px", lg: "400px" }}
-                w={{ base: "200px", lg: "300px" }}
+                h={{ base: "200px", md: "300px", lg: "400px" }}
+                w={{ base: "100px", md: "200px", lg: "300px" }}
               />
-              <Heading fontSize="h6">Fish fantasy- 70g</Heading>
+              <Heading fontSize={{ base: "xs", md: "h6" }}>
+                Fish fantasy- 70g
+              </Heading>
             </Stack>
 
-            <Heading fontSize="h3">+</Heading>
+            <Heading fontSize={{ base: "h6", md: "h3" }}>+</Heading>
 
             <Stack alignItems="center">
               <Image
@@ -239,29 +245,33 @@ const HomeScreen = () => {
                 bgColor="text.darkIvory"
                 borderRadius="2xl"
                 p={5}
-                h={{ base: "300px", lg: "400px" }}
-                w={{ base: "200px", lg: "300px" }}
+                h={{ base: "200px", md: "300px", lg: "400px" }}
+                w={{ base: "100px", md: "200px", lg: "300px" }}
               />
-              <Heading fontSize="h6">Meaty marvel-70g</Heading>
+              <Heading fontSize={{ base: "xs", md: "h6" }}>
+                Meaty marvel-70g
+              </Heading>
             </Stack>
           </Flex>
 
           <RichText
             text="The perfect introduction to the Tovlo way — your Starter Pack awaits"
-            width={{ base: "3xl", lg: "4xl" }}
+            width={{ base: "full", md: "3xl", lg: "4xl" }}
             textTransform="none"
+            fontSize={{ base: "text1", md: "h4" }}
           />
           <CustomButton>Try the starter pack</CustomButton>
         </Stack>
       </Box>
 
       {/* Ingredients TAB */}
-      <Box px={{ base: 0, lg: 5 }} py={20}>
+      <Box px={{ base: 0, lg: 5 }} py={{ base: 10, md: 20 }}>
         <Stack
           bgColor="text.primary"
           borderRadius={{ base: "none", lg: "4xl" }}
           alignItems="center"
-          p={{ base: 5, lg: 10 }}
+          p={{ base: 2, md: 5, lg: 10 }}
+          py={5}
           gap={10}
         >
           <RichText text="Our Ingredients" color="text.ivory" />
@@ -272,7 +282,7 @@ const HomeScreen = () => {
             justifyItems="center"
           >
             <Tabs.List bgColor="transparent" p="1">
-              <Wrap gap={5} p={1} justifyContent="center">
+              <Wrap gap={{ base: 3, md: 5 }} p={1} justifyContent="center">
                 {tabContent.map((item, index) => (
                   <Tabs.Trigger
                     key={index}
@@ -281,9 +291,9 @@ const HomeScreen = () => {
                     borderColor="text.ivory"
                     borderRadius="lg"
                     fontFamily="heading"
-                    fontSize="h5"
-                    px={{ base: 10, lg: 20 }}
-                    py={6}
+                    fontSize={{ base: "text8", md: "h5" }}
+                    px={{ base: 3, md: 10, lg: 20 }}
+                    py={{ base: 4, md: 6 }}
                     color="text.ivory"
                     _selected={{ bg: "text.ivory", color: "text.primary" }}
                   >
@@ -298,7 +308,7 @@ const HomeScreen = () => {
                 color="text.ivory"
                 key={index}
                 value={item.title}
-                w="md"
+                w={{ base: "xs", md: "md" }}
                 textAlign="center"
               >
                 <Stack gap={5} alignItems="center">
@@ -306,19 +316,23 @@ const HomeScreen = () => {
                     bgImage="url('../assets/tab_bubble.png')"
                     bgSize="100% 100%"
                     bgRepeat="no-repeat"
-                    w="550px"
-                    h="500px"
+                    w={{ base: "350px", md: "550px" }}
+                    h={{ base: "300px", md: "500px" }}
                     justifyContent="center"
                     alignItems="center"
                   >
                     <Image
                       src={item.image}
-                      boxSize="350px"
+                      boxSize={{ base: "200px", md: "350px" }}
                       objectFit="contain"
                     />
                   </Flex>
-                  <Heading fontSize="h3">{item.title}</Heading>
-                  <Text fontSize="text1">{item.description}</Text>
+                  <Heading fontSize={{ base: "h5", md: "h3" }}>
+                    {item.title}
+                  </Heading>
+                  <Text fontSize={{ base: "text8", md: "text1" }}>
+                    {item.description}
+                  </Text>
                 </Stack>
               </Tabs.Content>
             ))}
@@ -331,7 +345,7 @@ const HomeScreen = () => {
         <Stack
           gap={10}
           py={10}
-          px={5}
+          px={{ base: 3, lg: 5 }}
           bgColor="background.ivory"
           border="1px solid "
           borderColor="text.lightGreen50"
@@ -339,37 +353,62 @@ const HomeScreen = () => {
           alignItems="center"
         >
           <RichText text="Why Pet Parents Choose Tovlo" width="full" />
-          <Grid templateColumns="repeat(3, 1fr)" gap={{ base: 5, lg: 10 }}>
-            {whyChooseTovlo.map((item, index) => (
-              <Stack gap={5} key={index}>
-                <Image
-                  src={item.image}
-                  borderRadius="lg"
-                  boxShadow="4px 4px 8px 0px rgba(0, 0, 0, 0.10)"
-                  h={{ base: "300px", lg: "350px" }}
-                />
-                <Stack
-                  gap={2}
-                  textAlign="center"
-                  w={{ base: "95%", lg: "90%" }}
-                >
-                  <Heading fontSize="h6" fontWeight="bold">
-                    {item.title}
-                  </Heading>
-                  <Text fontSize="text6">{item.description}</Text>
-                </Stack>
-              </Stack>
-            ))}
-          </Grid>
+          {/* <Grid templateColumns="repeat(3, 1fr)" gap={{ base: 5, lg: 10 }}> */}
+          <Box w="full">
+            <Swiper
+              loop={true}
+              spaceBetween={20}
+              breakpoints={{
+                0: {
+                  slidesPerView: 1.05,
+                  spaceBetween: 10, // for mobile
+                },
+                640: {
+                  slidesPerView: 3,
+                  spaceBetween: 10, // tablet
+                },
+                1024: {
+                  slidesPerView: 3,
+                  spaceBetween: 20, // desktop
+                },
+              }}
+              className="testimonialSwiper"
+            >
+              {whyChooseTovlo.map((item, index) => (
+                <SwiperSlide>
+                  <Stack gap={5} key={index}>
+                    <Image
+                      src={item.image}
+                      borderRadius="lg"
+                      boxShadow="4px 4px 8px 0px rgba(0, 0, 0, 0.10)"
+                      h={{ base: "300px", lg: "350px" }}
+                    />
+                    <Stack
+                      gap={2}
+                      textAlign="center"
+                      w={{ base: "95%", lg: "90%" }}
+                    >
+                      <Heading fontSize="h6" fontWeight="bold">
+                        {item.title}
+                      </Heading>
+                      <Text fontSize="text6">{item.description}</Text>
+                    </Stack>
+                  </Stack>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </Box>
+          {/* </Grid> */}
+          <CustomButton>See our meals</CustomButton>
         </Stack>
       </Box>
 
       {/* BECOME PART OF TOVLO FAMILY */}
-      <Box p={{ base: 0, lg: 5 }} py={20}>
+      <Box p={{ base: 0, lg: 5 }} py={{ base: 10, md: 20 }}>
         <Stack
           gap={5}
           py={10}
-          px={5}
+          px={{ base: 2, lg: 5 }}
           bgColor="background.ivory"
           border="1px solid "
           borderColor="text.lightGreen50"
@@ -378,24 +417,36 @@ const HomeScreen = () => {
         >
           <RichText
             text="Become a Part of the Tovlo Family"
-            width={{ base: "xl", lg: "full" }}
+            width={{ base: "full", md: "xl", lg: "full" }}
           />
-          <Stack gap={5} textAlign="center" w={{ base: "md", lg: "lg" }}>
-            <Heading fontSize={{ base: "h5", lg: "h4" }} fontWeight="bold">
+          <Stack
+            gap={5}
+            textAlign="center"
+            w={{ base: "full", md: "md", lg: "lg" }}
+          >
+            <Heading
+              fontSize={{ base: "h6", md: "h5", lg: "h4" }}
+              fontWeight="bold"
+            >
               Ready to share the love?
             </Heading>
-            <Text fontSize={{ base: "text6", lg: "text1" }}>
+            <Text fontSize={{ base: "text8", md: "text6", lg: "text1" }}>
               Join a movement of passionate pet parents. We’re building more
               than a brand — we’re building a community.
             </Text>
           </Stack>
           <CustomButton>Let's do this</CustomButton>
 
-          <Flex gap={3} w="lg" wrap="wrap" justifyContent="center">
+          <Flex
+            gap={3}
+            w={{ base: "full", md: "lg" }}
+            wrap="wrap"
+            justifyContent="center"
+          >
             {bonuses.map((item, index) => (
               <Flex gap={2} alignItems="center" key={index}>
                 <Icon as={item.icon} />
-                <Text fontSize="text8">{item.text}</Text>
+                <Text fontSize={{ base: "xs", md: "text8" }}>{item.text}</Text>
               </Flex>
             ))}
           </Flex>
@@ -408,7 +459,7 @@ const HomeScreen = () => {
         <Stack
           gap={5}
           py={10}
-          px={5}
+          px={{ base: 2, lg: 5 }}
           bgColor="background.ivory"
           border="1px solid "
           borderColor="text.lightGreen50"
@@ -417,19 +468,28 @@ const HomeScreen = () => {
         >
           <RichText
             text="What those who have already chosen us are saying"
-            width="3xl"
+            width={{ base: "full", md: "3xl" }}
           />
 
           <Box w="full">
             <Swiper
               loop={true}
-              // modules={[Autoplay]}
-              // autoplay={{
-              //   delay: 3000,
-              //   disableOnInteraction: false,
-              // }}
               slidesPerView={1.5}
               spaceBetween={20}
+              breakpoints={{
+                0: {
+                  slidesPerView: 1.05,
+                  spaceBetween: 10, // for mobile
+                },
+                640: {
+                  slidesPerView: 1.2,
+                  spaceBetween: 15, // tablet
+                },
+                1024: {
+                  slidesPerView: 1.5,
+                  spaceBetween: 20, // desktop
+                },
+              }}
               className="testimonialSwiper"
             >
               {reviews.map((review, index) => (
