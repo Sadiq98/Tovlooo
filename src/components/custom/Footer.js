@@ -235,6 +235,31 @@ const Footer = () => {
           </Stack>
         </Grid>
       </Stack>
+      <Flex
+        bgColor="text.primary"
+        px={5}
+        justifyContent="space-between"
+        display={{ base: "flex", md: "none" }}
+      >
+        <SingleLink
+          fontSize="sm"
+          label="Privacy Policy"
+          textDecoration="underline"
+          color="text.ivory"
+        />
+        <SingleLink
+          fontSize="sm"
+          label="Delivery & return"
+          textDecoration="underline"
+          color="text.ivory"
+        />
+        <SingleLink
+          fontSize="sm"
+          label="Terms of use"
+          textDecoration="underline"
+          color="text.ivory"
+        />
+      </Flex>
       <FooterBar />
     </>
   );

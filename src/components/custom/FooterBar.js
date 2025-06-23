@@ -33,7 +33,7 @@ const FooterBar = () => {
         px={5}
         py={2}
       >
-        <Flex gap={10}>
+        <Flex gap={10} display={{ base: "none", md: "flex" }}>
           <SingleLink
             fontSize="xs"
             label="Privacy Policy"
