@@ -1,7 +1,7 @@
 import { Box, Stack, Heading, Text } from "@chakra-ui/react";
 import { lazy } from "react";
 
-const CustomButton = lazy(() => import("./CustomButton"));
+import { GreenButton } from "./CustomButton";
 
 const BannerSlide = ({ heading, text, button, bgImage }) => {
   return (
@@ -60,7 +60,7 @@ const BannerSlide = ({ heading, text, button, bgImage }) => {
             </Text>
           </Stack>
 
-          <CustomButton>{button}</CustomButton>
+          <GreenButton>{button}</GreenButton>
         </Stack>
       </Box>
     </>

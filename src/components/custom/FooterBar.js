@@ -1,28 +1,10 @@
-import { Flex, Icon, Link, Text } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 
-import { IoLogoWhatsapp } from "react-icons/io";
-import { RiInstagramFill } from "react-icons/ri";
-import { FaFacebookF } from "react-icons/fa";
 import { lazy } from "react";
 
 const SingleLink = lazy(() => import("./SingleLink"));
 
 const FooterBar = () => {
-  const socials = [
-    {
-      icon: IoLogoWhatsapp,
-      link: "https://wa.me/2348123456789",
-    },
-    {
-      icon: RiInstagramFill,
-      link: "https://instagram.com/",
-    },
-    {
-      icon: FaFacebookF,
-      link: "https://facebook.com/",
-    },
-  ];
-
   return (
     <>
       <Flex

@@ -27,11 +27,14 @@ import {
   marquee2,
   reviews,
 } from "../data/homescreenData";
+import { products } from "../data/products";
 
+import { GreenButton, OrangeButton } from "../components/custom/CustomButton";
+
+const ProductCard = lazy(() => import("../components/custom/ProductCard"));
 const CustomMarquee = lazy(() => import("../components/custom/Marquee"));
 const RichText = lazy(() => import("../components/custom/RichText"));
 const BannerSlide = lazy(() => import("../components/custom/BannerSlide"));
-const CustomButton = lazy(() => import("../components/custom/CustomButton"));
 const CustomTimeline = lazy(() => import("../components/custom/Timeline"));
 const Video = lazy(() => import("../components/custom/Video"));
 const Testimonial = lazy(() => import("../components/custom/Testimonial"));
@@ -160,8 +163,76 @@ const HomeScreen = () => {
         <ComparisonTable />
       </Stack>
 
+      {/* Products */}
+      <Stack
+        alignItems="center"
+        py={20}
+        px={{ base: 2, md: 5, lg: 5 }}
+        gap={10}
+        position="relative"
+      >
+        <RichText
+          text="Handpicked meals your dog will absolutely love"
+          width={{ base: "full", md: "3xl" }}
+        />
+        <Text
+          fontSize={{ base: "text6", md: "text1" }}
+          w={{ base: "full", md: "md" }}
+          textAlign="center"
+        >
+          Crafted with real ingredients and real care, because they deserve only
+          the best
+        </Text>
+
+        <Grid
+          templateColumns={{ md: "repeat(2, 1fr)", lg: "repeat(4, 1fr)" }}
+          gap={{ md: 10, lg: 5 }}
+          display={{ base: "none", md: "grid" }}
+        >
+          {products.map((product, index) => (
+            <SwiperSlide>
+              <ProductCard product={product} />
+            </SwiperSlide>
+          ))}
+        </Grid>
+        <Box w="full" zIndex={2} display={{ base: "block", md: "none" }}>
+          <Swiper
+            loop={true}
+            spaceBetween={20}
+            breakpoints={{
+              0: {
+                slidesPerView: 1.05,
+                spaceBetween: 10, // for mobile
+              },
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20, // tablet
+              },
+              1024: {
+                slidesPerView: 4,
+                spaceBetween: 20, // desktop
+              },
+            }}
+            className="testimonialSwiper"
+          >
+            {products.map((product, index) => (
+              <SwiperSlide>
+                <ProductCard product={product} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </Box>
+        <OrangeButton
+          position={{ base: "initial", lg: "absolute" }}
+          right={5}
+          top="20%"
+        >
+          View All Products
+        </OrangeButton>
+      </Stack>
+
       {/* Timeline */}
-      <Stack alignItems="center" px={5} gap={10} py={20}>
+      <Stack alignItems="center" px={5} gap={10} py={10}>
         <RichText text="The journey of every meal from farm to bowl" />
         <CustomTimeline />
       </Stack>
@@ -252,7 +323,7 @@ const HomeScreen = () => {
             textTransform="none"
             fontSize={{ base: "text1", md: "h4" }}
           />
-          <CustomButton>Try the starter pack</CustomButton>
+          <GreenButton>Try the starter pack</GreenButton>
         </Stack>
       </Box>
 
@@ -393,7 +464,7 @@ const HomeScreen = () => {
             </Swiper>
           </Box>
           {/* </Grid> */}
-          <CustomButton>See our meals</CustomButton>
+          <GreenButton>See our meals</GreenButton>
         </Stack>
       </Box>
 
@@ -420,7 +491,7 @@ const HomeScreen = () => {
               than a brand — we’re building a community.
             </Text>
           </Stack>
-          <CustomButton>Let's do this</CustomButton>
+          <GreenButton>Let's do this</GreenButton>
 
           <Flex
             gap={3}

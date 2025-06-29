@@ -17,8 +17,8 @@ background: #F6F2E9;
 }
 
 ::selection {
-  background: #e0a45e70; /* your desired background */
-  color: #4a221a;        /* text color on selection */
+  background: #FBFFDC; /* your desired background */
+  color: #017D65;        /* text color on selection */
 }
 
 body{

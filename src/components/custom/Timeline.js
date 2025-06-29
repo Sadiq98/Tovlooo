@@ -72,7 +72,7 @@ const CustomTimeline = () => {
                   <Timeline.Title>
                     <Image
                       src={step.image}
-                      boxSize={{ base: "350px", md: "400px" }}
+                      boxSize={{ base: "200px", md: "400px" }}
                       objectFit="contain"
                       alt={step.heading}
                     />
@@ -85,7 +85,7 @@ const CustomTimeline = () => {
                   <Timeline.Title>
                     <Image
                       src={step.image}
-                      boxSize={{ base: "350px", md: "400px" }}
+                      boxSize={{ base: "200px", md: "400px" }}
                       objectFit="contain"
                       alt={step.heading}
                     />

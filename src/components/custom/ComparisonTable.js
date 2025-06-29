@@ -60,7 +60,7 @@ const ComparisonTable = () => {
               <Stack alignItems="center">
                 <Image
                   src="/assets/table_frozen.png"
-                  boxSize={{ base: "60px", md: "100px" }}
+                  boxSize={{ base: "50px", md: "100px" }}
                 />
                 Frozen Food
               </Stack>
@@ -77,7 +77,7 @@ const ComparisonTable = () => {
               <Stack alignItems="center">
                 <Image
                   src="/assets/table_frozen.png"
-                  boxSize={{ base: "60px", md: "100px" }}
+                  boxSize={{ base: "50px", md: "100px" }}
                 />
                 <Logo display={{ base: "none", md: "block" }} />
                 <Logo width="80" height="20" />
@@ -94,7 +94,7 @@ const ComparisonTable = () => {
               <Stack alignItems="center">
                 <Image
                   src="/assets/table_dry.png"
-                  boxSize={{ base: "60px", md: "100px" }}
+                  boxSize={{ base: "50px", md: "100px" }}
                 />
                 Dry Food
               </Stack>
@@ -110,12 +110,20 @@ const ComparisonTable = () => {
               color="text.primary"
             >
               {/* Title */}
-              <Table.Cell py={10} border="none" borderLeftRadius="4xl">
+              <Table.Cell
+                py={{ base: 5, md: 10 }}
+                border="none"
+                borderLeftRadius="4xl"
+              >
                 {item.title}
               </Table.Cell>
 
               {/* Frozen Food */}
-              <Table.Cell py={10} border="none" textAlign="center">
+              <Table.Cell
+                py={{ base: 5, md: 10 }}
+                border="none"
+                textAlign="center"
+              >
                 <Icon
                   as={item.frozen ? FaRegThumbsUp : FaRegThumbsDown}
                   color={item.frozen ? "text.primary" : "text.orange"}
@@ -125,7 +133,7 @@ const ComparisonTable = () => {
 
               {/* Tovlo */}
               <Table.Cell
-                py={10}
+                py={{ base: 5, md: 10 }}
                 border="1px solid"
                 borderBottomRadius={
                   index === tableData.length - 1 ? "40px" : ""
@@ -143,7 +151,7 @@ const ComparisonTable = () => {
 
               {/* Dry Food */}
               <Table.Cell
-                py={10}
+                py={{ base: 5, md: 10 }}
                 border="none"
                 textAlign="center"
                 borderRightRadius="4xl"
