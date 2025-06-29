@@ -342,10 +342,13 @@ const HomeScreen = () => {
           borderColor="text.lightGreen50"
           borderRadius={{ base: "none", lg: "4xl" }}
           alignItems="center"
+          bgImage="url('../assets/paw-background.png')"
+          bgRepeat="no-repeat"
+          bgSize="cover"
         >
           <RichText text="Why Pet Parents Choose Tovlo" width="full" />
           {/* <Grid templateColumns="repeat(3, 1fr)" gap={{ base: 5, lg: 10 }}> */}
-          <Box w="full">
+          <Box w="full" zIndex={2}>
             <Swiper
               loop={true}
               spaceBetween={20}
