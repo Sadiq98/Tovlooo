@@ -17,7 +17,7 @@ const Video = () => {
 
   return (
     <>
-      <Box position="relative" maxW="full" onClick={handlePlay}>
+      <Box position="relative" minW="full" onClick={handlePlay}>
         <video
           ref={videoRef}
           width="100%"

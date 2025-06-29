@@ -74,7 +74,6 @@ const HomeScreen = () => {
       {/* Scientifically Designed */}
       <Stack px={{ base: 0, lg: 5 }} py={20}>
         <Stack
-          bgColor="custom.green"
           borderRadius={{ base: "none", lg: "xl" }}
           alignItems="center"
           p={{ base: 5, md: 10, lg: 5 }}
@@ -82,7 +81,6 @@ const HomeScreen = () => {
         >
           <RichText
             text="Scientifically Designed Loved by Dogs"
-            color="text.ivory"
             width={{ base: "full", md: "xl" }}
           />
           <Image
@@ -96,17 +94,16 @@ const HomeScreen = () => {
             position={{ base: "none", lg: "absolute" }}
             w={{ base: "auto", lg: "80%" }}
             gap={{ base: 10, md: 20, lg: 40 }}
-            top="30%"
+            top="25%"
           >
             {bowlData.map((item, index) => (
               <Stack
-                color="text.ivory"
                 alignItems="center"
                 justifySelf={index % 2 === 0 ? "start" : "end"}
               >
                 <Image
                   src={item.image}
-                  boxSize={{ base: 14, md: 20, lg: 10 }}
+                  boxSize={{ base: 14, md: 20, lg: 12 }}
                 />
                 <Heading
                   fontWeight="normal"
@@ -151,7 +148,11 @@ const HomeScreen = () => {
       </Stack>
 
       {/* Table */}
-      <Stack alignItems="center" px={{ base: 2, md: 5 }} gap={10}>
+      <Stack
+        alignItems="center"
+        px={{ base: 2, md: 5, lg: 5, xl: 20 }}
+        gap={10}
+      >
         <RichText
           text="Why settle for less? Discover the real difference with Tovlo"
           width={{ base: "full", md: "3xl" }}
@@ -167,16 +168,7 @@ const HomeScreen = () => {
 
       {/* Starter Box */}
       <Box p={{ base: 0, lg: 5 }}>
-        <Stack
-          gap={10}
-          py={10}
-          px={{ base: 0, lg: 5 }}
-          bgColor="background.ivory"
-          border="1px solid "
-          borderColor="text.lightGreen50"
-          borderRadius={{ base: "none", lg: "4xl" }}
-          alignItems="center"
-        >
+        <Stack gap={10} py={10} px={{ base: 0, lg: 5 }} alignItems="center">
           <RichText text="Start Their Journey to Better Health" />
 
           {/* Packages */}
@@ -267,14 +259,13 @@ const HomeScreen = () => {
       {/* Ingredients TAB */}
       <Box px={{ base: 0, lg: 5 }} py={{ base: 10, md: 20 }}>
         <Stack
-          bgColor="text.primary"
           borderRadius={{ base: "none", lg: "4xl" }}
           alignItems="center"
           p={{ base: 2, md: 5, lg: 10 }}
           py={5}
           gap={10}
         >
-          <RichText text="Our Ingredients" color="text.ivory" />
+          <RichText text="Our Ingredients" />
           <Tabs.Root
             defaultValue={tabContent[0].title}
             variant="plain"
@@ -288,14 +279,14 @@ const HomeScreen = () => {
                     key={index}
                     value={item.title}
                     border="2px solid"
-                    borderColor="text.ivory"
+                    borderColor="text.primary"
                     borderRadius="lg"
                     fontFamily="heading"
                     fontSize={{ base: "text8", md: "h5" }}
                     px={{ base: 3, md: 10, lg: 20 }}
                     py={{ base: 4, md: 6 }}
-                    color="text.ivory"
-                    _selected={{ bg: "text.ivory", color: "text.primary" }}
+                    color="text.primary "
+                    _selected={{ bg: "text.primary", color: "text.ivory" }}
                   >
                     {item.title}
                   </Tabs.Trigger>
@@ -305,7 +296,7 @@ const HomeScreen = () => {
 
             {tabContent.map((item, index) => (
               <Tabs.Content
-                color="text.ivory"
+                color="text.primary"
                 key={index}
                 value={item.title}
                 w={{ base: "xs", md: "md" }}
@@ -405,16 +396,7 @@ const HomeScreen = () => {
 
       {/* BECOME PART OF TOVLO FAMILY */}
       <Box p={{ base: 0, lg: 5 }} py={{ base: 10, md: 20 }}>
-        <Stack
-          gap={5}
-          py={10}
-          px={{ base: 2, lg: 5 }}
-          bgColor="background.ivory"
-          border="1px solid "
-          borderColor="text.lightGreen50"
-          borderRadius={{ base: "none", lg: "4xl" }}
-          alignItems="center"
-        >
+        <Stack gap={5} py={10} px={{ base: 2, lg: 5 }} alignItems="center">
           <RichText
             text="Become a Part of the Tovlo Family"
             width={{ base: "full", md: "xl", lg: "full" }}
@@ -456,16 +438,7 @@ const HomeScreen = () => {
 
       {/* REVIEWS */}
       <Box p={{ base: 0, lg: 5 }} py={10}>
-        <Stack
-          gap={5}
-          py={10}
-          px={{ base: 2, lg: 5 }}
-          bgColor="background.ivory"
-          border="1px solid "
-          borderColor="text.lightGreen50"
-          borderRadius={{ base: "none", lg: "4xl" }}
-          alignItems="center"
-        >
+        <Stack gap={5} py={10} px={{ base: 2, lg: 5 }} alignItems="center">
           <RichText
             text="What those who have already chosen us are saying"
             width={{ base: "full", md: "3xl" }}
@@ -475,6 +448,11 @@ const HomeScreen = () => {
             <Swiper
               loop={true}
               slidesPerView={1.5}
+              modules={[Autoplay]}
+              autoplay={{
+                delay: 5000,
+                disableOnInteraction: false,
+              }}
               spaceBetween={20}
               breakpoints={{
                 0: {
@@ -486,7 +464,11 @@ const HomeScreen = () => {
                   spaceBetween: 15, // tablet
                 },
                 1024: {
-                  slidesPerView: 1.5,
+                  slidesPerView: 1.3,
+                  spaceBetween: 20, // desktop
+                },
+                1920: {
+                  slidesPerView: 1.7,
                   spaceBetween: 20, // desktop
                 },
               }}

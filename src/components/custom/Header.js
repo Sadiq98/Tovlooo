@@ -76,7 +76,11 @@ const Header = () => {
           borderColor="text.ivory"
         >
           {/* Left Nav */}
-          <Flex align="center" gap={4} display={{ base: "none", lg: "flex" }}>
+          <Flex
+            align="center"
+            gap={{ lg: 5, xl: 6 }}
+            display={{ base: "none", lg: "flex" }}
+          >
             <SingleLink label="About us" />
             <SingleLink label="Catalog" />
             <SingleLink label="Ingredients" />
@@ -93,8 +97,12 @@ const Header = () => {
             }}
             _focus={{ outline: "none" }}
           >
-            <Logo display={{ base: "none", md: "block" }} />
-            <Logo width="120" height="20" />
+            <Logo display={{ base: "none", xl: "block" }} />
+            <Logo
+              width="120"
+              height="20"
+              display={{ base: "block", xl: "none" }}
+            />
           </Link>
 
           {/* Right Side */}

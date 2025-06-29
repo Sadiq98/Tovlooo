@@ -33,13 +33,13 @@ const timelineSteps = [
 const TimelineData = ({ heading, text }) => (
   <Stack gap={5} width={{ base: "5xs", md: "xs", lg: "sm" }}>
     <Heading
-      fontSize={{ base: "text6", md: "h5", lg: "h3" }}
+      fontSize={{ base: "text6", md: "h5", lg: "h4" }}
       lineHeight="heading2"
     >
       {heading}
     </Heading>
     <Text
-      fontSize={{ base: "text8", md: "text1", lg: "text3" }}
+      fontSize={{ base: "text8", md: "text1", lg: "text1" }}
       fontWeight="normal"
       lineHeight="text1"
     >
@@ -72,7 +72,7 @@ const CustomTimeline = () => {
                   <Timeline.Title>
                     <Image
                       src={step.image}
-                      boxSize={{ base: "350px", md: "600px" }}
+                      boxSize={{ base: "350px", md: "400px" }}
                       objectFit="contain"
                       alt={step.heading}
                     />
@@ -85,7 +85,7 @@ const CustomTimeline = () => {
                   <Timeline.Title>
                     <Image
                       src={step.image}
-                      boxSize={{ base: "350px", md: "600px" }}
+                      boxSize={{ base: "350px", md: "400px" }}
                       objectFit="contain"
                       alt={step.heading}
                     />
