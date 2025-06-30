@@ -259,7 +259,7 @@ const HomeScreen = () => {
             gap={{ base: 1, md: 3 }}
             wrap={{ base: "wrap", lg: "nowrap" }}
           >
-            <Stack alignItems="center" w={{ base: "100vw", lg: "auto" }}>
+            <Stack alignItems="center" w={{ base: "100%", lg: "auto" }}>
               <Image
                 src="../assets/starter_box.png"
                 bgColor="text.darkIvory"
@@ -267,7 +267,6 @@ const HomeScreen = () => {
                 p={5}
                 w={{ base: "300px", md: "500px", lg: "500px" }}
                 h={{ base: "300px", md: "500px", lg: "500px" }}
-                // boxSize={{ base: "300px", md: "500px" }}
               />
               <Heading fontSize={{ base: "text6", md: "h6" }}>
                 Beautiful Starter Box
@@ -277,7 +276,7 @@ const HomeScreen = () => {
             <Heading
               fontSize="h3"
               textAlign="center"
-              w={{ base: "100vw", lg: "auto" }}
+              w={{ base: "100%", lg: "auto" }}
             >
               =
             </Heading>
