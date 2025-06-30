@@ -1,8 +1,4 @@
-import { Box, Flex, Icon, Image, Stack, Table } from "@chakra-ui/react";
-
-import { FaRegThumbsUp } from "react-icons/fa";
-import { FaRegThumbsDown } from "react-icons/fa";
-import { SlCheck } from "react-icons/sl";
+import { Flex, Image, Stack, Table } from "@chakra-ui/react";
 
 import Logo from "../../data/Logo";
 
