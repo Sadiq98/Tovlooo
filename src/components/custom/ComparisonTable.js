@@ -1,4 +1,4 @@
-import { Icon, Image, Stack, Table } from "@chakra-ui/react";
+import { Box, Flex, Icon, Image, Stack, Table } from "@chakra-ui/react";
 
 import { FaRegThumbsUp } from "react-icons/fa";
 import { FaRegThumbsDown } from "react-icons/fa";
@@ -125,11 +125,16 @@ const ComparisonTable = () => {
                 border="none"
                 textAlign="center"
               >
-                <Icon
-                  as={item.frozen ? FaRegThumbsUp : FaRegThumbsDown}
-                  color={item.frozen ? "text.primary" : "text.orange"}
-                  boxSize={{ base: 6, md: 10 }}
-                />
+                <Flex justify="center">
+                  <Image
+                    src={
+                      item.frozen
+                        ? "../assets/Icons/thumbs-up.svg"
+                        : "../assets/Icons/thumbs-down.svg"
+                    }
+                    boxSize={{ base: 6, md: 10 }}
+                  />
+                </Flex>
               </Table.Cell>
 
               {/* Tovlo */}
@@ -143,11 +148,12 @@ const ComparisonTable = () => {
                 color="text.ivory"
                 textAlign="center"
               >
-                <Icon
-                  as={SlCheck}
-                  boxSize={{ base: 6, md: 10 }}
-                  color="text.ivory"
-                />
+                <Flex justify="center">
+                  <Image
+                    src={"../assets/Icons/check.svg"}
+                    boxSize={{ base: 6, md: 10 }}
+                  />
+                </Flex>
               </Table.Cell>
 
               {/* Dry Food */}
@@ -157,11 +163,16 @@ const ComparisonTable = () => {
                 textAlign="center"
                 borderRightRadius={{ base: "3xl", md: "4xl" }}
               >
-                <Icon
-                  as={item.dry ? FaRegThumbsUp : FaRegThumbsDown}
-                  color={item.frozen ? "text.primary" : "text.orange"}
-                  boxSize={{ base: 6, md: 10 }}
-                />
+                <Flex justify="center">
+                  <Image
+                    src={
+                      item.frozen
+                        ? "../assets/Icons/thumbs-up.svg"
+                        : "../assets/Icons/thumbs-down.svg"
+                    }
+                    boxSize={{ base: 6, md: 10 }}
+                  />
+                </Flex>
               </Table.Cell>
             </Table.Row>
           ))}

@@ -9,9 +9,10 @@ import {
   Tabs,
   Wrap,
   Icon,
+  Button,
 } from "@chakra-ui/react";
 
-import { lazy } from "react";
+import { lazy, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -43,6 +44,9 @@ const ComparisonTable = lazy(() =>
 );
 
 const HomeScreen = () => {
+  const swiperRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
     <>
       {/* Banner */}
@@ -554,38 +558,70 @@ const HomeScreen = () => {
             width={{ base: "full", md: "3xl" }}
           />
 
+          <Flex
+            gap={{ base: 3, lg: 5 }}
+            wrap="wrap"
+            justifyContent="center"
+            w={"full"}
+          >
+            {reviews.map((review, index) => (
+              <Button
+                size="xl"
+                w={{ base: "45%", md: "45%", lg: "auto" }}
+                fontSize={{
+                  base: "buttonSecondaryOval",
+                  md: "buttonPrimary",
+                  lg: "20px",
+                }}
+                key={index}
+                fontFamily="heading"
+                border="2px solid"
+                bgColor={activeIndex === index ? "text.orange" : "transparent"}
+                borderColor="text.orange"
+                borderRadius="2xl"
+                color={activeIndex === index ? "text.ivory" : "text.orange"}
+                onClick={() => {
+                  swiperRef.current?.slideToLoop(index);
+                  setActiveIndex(index);
+                }}
+              >
+                {review.title}
+              </Button>
+            ))}
+          </Flex>
+
           <Box w="full">
             <Swiper
+              onSwiper={(swiper) => (swiperRef.current = swiper)}
+              onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
               loop={true}
-              slidesPerView={1.5}
               modules={[Autoplay]}
               autoplay={{
                 delay: 5000,
                 disableOnInteraction: false,
               }}
-              spaceBetween={20}
               breakpoints={{
                 0: {
                   slidesPerView: 1.05,
-                  spaceBetween: 10, // for mobile
+                  spaceBetween: 10,
                 },
                 640: {
                   slidesPerView: 1.2,
-                  spaceBetween: 15, // tablet
+                  spaceBetween: 15,
                 },
                 1024: {
                   slidesPerView: 1.3,
-                  spaceBetween: 20, // desktop
+                  spaceBetween: 20,
                 },
                 1920: {
                   slidesPerView: 1.7,
-                  spaceBetween: 20, // desktop
+                  spaceBetween: 20,
                 },
               }}
               className="testimonialSwiper"
             >
               {reviews.map((review, index) => (
-                <SwiperSlide>
+                <SwiperSlide key={index}>
                   <Testimonial {...review} />
                 </SwiperSlide>
               ))}
