@@ -5,9 +5,10 @@ import {
   Text,
   Timeline,
   Separator,
+  Box,
 } from "@chakra-ui/react";
-
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const timelineSteps = [
   {
@@ -52,67 +53,99 @@ const TimelineData = ({ heading, text }) => (
 );
 
 const CustomTimeline = () => {
-  return (
-    <Timeline.Root size="xl" width="full" alignItems="center">
-      {timelineSteps.map((step, index) => {
-        const isEven = index % 2 === 0;
-        const isLast = index === timelineSteps.length - 1;
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end end"],
+  });
 
-        return (
-          <Timeline.Item key={index} alignItems="center">
-            {isEven ? (
-              <>
-                <Timeline.Content>
-                  <Timeline.Title>
-                    <TimelineData heading={step.heading} text={step.text} />
-                  </Timeline.Title>
-                </Timeline.Content>
-                <Timeline.Connector px={{ base: 2, md: 5 }}>
-                  <Timeline.Separator
-                    borderColor="text.primary"
-                    display={isLast ? "block" : undefined}
-                  />
-                </Timeline.Connector>
-                <Timeline.Content>
-                  <Timeline.Title>
-                    <Image
-                      src={step.image}
-                      boxSize={{ base: "200px", md: "400px" }}
-                      objectFit="contain"
-                      alt={step.heading}
+  const height = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
+  return (
+    <Box position="relative" ref={containerRef}>
+      {/* Animated center vertical line */}
+      <Box
+        position="absolute"
+        top={0}
+        left="50%"
+        transform="translateX(-50%)"
+        width="2px"
+        height="100%"
+        bg="gray.300"
+        zIndex={0}
+        overflow="hidden"
+      >
+        <motion.div
+          style={{
+            width: "100%",
+            height,
+            backgroundColor: "#017D65", // or use your Chakra color token
+            transformOrigin: "top",
+          }}
+        />
+      </Box>
+
+      <Timeline.Root size="xl" width="full" alignItems="center" zIndex={1}>
+        {timelineSteps.map((step, index) => {
+          const isEven = index % 2 === 0;
+          const isLast = index === timelineSteps.length - 1;
+
+          return (
+            <Timeline.Item key={index} alignItems="center">
+              {isEven ? (
+                <>
+                  <Timeline.Content>
+                    <Timeline.Title>
+                      <TimelineData heading={step.heading} text={step.text} />
+                    </Timeline.Title>
+                  </Timeline.Content>
+                  <Timeline.Connector px={{ base: 2, md: 5 }}>
+                    <Timeline.Separator
+                      borderColor="transparent"
+                      display={isLast ? "block" : undefined}
                     />
-                  </Timeline.Title>
-                </Timeline.Content>
-              </>
-            ) : (
-              <>
-                <Timeline.Content>
-                  <Timeline.Title>
-                    <Image
-                      src={step.image}
-                      boxSize={{ base: "200px", md: "400px" }}
-                      objectFit="contain"
-                      alt={step.heading}
+                  </Timeline.Connector>
+                  <Timeline.Content>
+                    <Timeline.Title>
+                      <Image
+                        src={step.image}
+                        boxSize={{ base: "200px", md: "400px" }}
+                        objectFit="contain"
+                        alt={step.heading}
+                      />
+                    </Timeline.Title>
+                  </Timeline.Content>
+                </>
+              ) : (
+                <>
+                  <Timeline.Content>
+                    <Timeline.Title>
+                      <Image
+                        src={step.image}
+                        boxSize={{ base: "200px", md: "400px" }}
+                        objectFit="contain"
+                        alt={step.heading}
+                      />
+                    </Timeline.Title>
+                  </Timeline.Content>
+                  <Timeline.Connector px={{ base: 2, md: 5 }}>
+                    <Timeline.Separator
+                      borderColor="transparent"
+                      display={isLast ? "block" : undefined}
                     />
-                  </Timeline.Title>
-                </Timeline.Content>
-                <Timeline.Connector px={{ base: 2, md: 5 }}>
-                  <Timeline.Separator
-                    borderColor="text.primary"
-                    display={isLast ? "block" : undefined}
-                  />
-                </Timeline.Connector>
-                <Timeline.Content>
-                  <Timeline.Title>
-                    <TimelineData heading={step.heading} text={step.text} />
-                  </Timeline.Title>
-                </Timeline.Content>
-              </>
-            )}
-          </Timeline.Item>
-        );
-      })}
-    </Timeline.Root>
+                  </Timeline.Connector>
+                  <Timeline.Content>
+                    <Timeline.Title>
+                      <TimelineData heading={step.heading} text={step.text} />
+                    </Timeline.Title>
+                  </Timeline.Content>
+                </>
+              )}
+            </Timeline.Item>
+          );
+        })}
+      </Timeline.Root>
+    </Box>
   );
 };
 
