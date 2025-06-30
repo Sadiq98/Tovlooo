@@ -45,7 +45,7 @@ const TimelineData = ({ heading, text }) => (
     >
       {text}
     </Text>
-    <Separator size="md" colorPalette="teal" />
+    <Separator size="md" borderColor="text.primary" />
   </Stack>
 );
 
@@ -66,7 +66,10 @@ const CustomTimeline = () => {
                   </Timeline.Title>
                 </Timeline.Content>
                 <Timeline.Connector px={{ base: 2, md: 5 }}>
-                  <Timeline.Separator display={isLast ? "block" : undefined} />
+                  <Timeline.Separator
+                    borderColor="text.primary"
+                    display={isLast ? "block" : undefined}
+                  />
                 </Timeline.Connector>
                 <Timeline.Content>
                   <Timeline.Title>
@@ -92,7 +95,10 @@ const CustomTimeline = () => {
                   </Timeline.Title>
                 </Timeline.Content>
                 <Timeline.Connector px={{ base: 2, md: 5 }}>
-                  <Timeline.Separator display={isLast ? "block" : undefined} />
+                  <Timeline.Separator
+                    borderColor="text.primary"
+                    display={isLast ? "block" : undefined}
+                  />
                 </Timeline.Connector>
                 <Timeline.Content>
                   <Timeline.Title>

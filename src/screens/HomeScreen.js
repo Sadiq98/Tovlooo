@@ -52,7 +52,7 @@ const HomeScreen = () => {
           lazy={true}
           pagination={{ clickable: true }}
           autoplay={{
-            delay: 3000,
+            delay: 5000,
             disableOnInteraction: false,
           }}
           modules={[Pagination, Autoplay]}
@@ -75,7 +75,7 @@ const HomeScreen = () => {
       <CustomMarquee data={marquee1} />
 
       {/* Scientifically Designed */}
-      <Stack px={{ base: 0, lg: 5 }} py={20}>
+      <Stack px={{ base: 0, lg: 5 }} py={{ base: 10, md: 20 }}>
         <Stack
           borderRadius={{ base: "none", lg: "xl" }}
           alignItems="center"
@@ -154,7 +154,7 @@ const HomeScreen = () => {
       <Stack
         alignItems="center"
         px={{ base: 2, md: 5, lg: 5, xl: 20 }}
-        gap={10}
+        gap={{ base: 5, md: 10 }}
       >
         <RichText
           text="Why settle for less? Discover the real difference with Tovlo"
@@ -239,7 +239,13 @@ const HomeScreen = () => {
 
       {/* Starter Box */}
       <Box p={{ base: 0, lg: 5 }}>
-        <Stack gap={10} py={10} px={{ base: 0, lg: 5 }} alignItems="center">
+        <Stack
+          gap={10}
+          py={10}
+          px={{ base: 0, lg: 5 }}
+          justifyContent="center"
+          alignItems="center"
+        >
           <RichText text="Start Their Journey to Better Health" />
 
           {/* Packages */}
@@ -255,7 +261,9 @@ const HomeScreen = () => {
                 bgColor="text.darkIvory"
                 borderRadius="2xl"
                 p={5}
-                boxSize={{ base: "300px", md: "500px" }}
+                w={{ base: "300px", md: "500px", lg: "500px" }}
+                h={{ base: "300px", md: "500px", lg: "500px" }}
+                // boxSize={{ base: "300px", md: "500px" }}
               />
               <Heading fontSize={{ base: "text6", md: "h6" }}>
                 Beautiful Starter Box
@@ -270,51 +278,79 @@ const HomeScreen = () => {
               =
             </Heading>
 
-            <Stack alignItems="center">
-              <Image
-                src="../assets/chicken_choice.png"
-                bgColor="text.darkIvory"
-                borderRadius="2xl"
-                p={5}
-                h={{ base: "200px", md: "300px", lg: "400px" }}
-                w={{ base: "100px", md: "200px", lg: "300px" }}
-              />
-              <Heading fontSize={{ base: "xs", md: "h6" }}>
-                Chicken choice- 70g
-              </Heading>
-            </Stack>
+            <Flex w={{ base: "sm", md: "auto" }}>
+              <Swiper
+                style={{ margin: "0" }}
+                breakpoints={{
+                  0: {
+                    slidesPerView: 2,
+                    initialSlide: 1,
+                    centeredSlides: true,
+                  },
+                  640: {
+                    slidesPerView: 3,
+                  },
+                }}
+              >
+                <SwiperSlide>
+                  <Flex alignItems="center" gap={{ base: 2, lg: 0 }}>
+                    <Stack alignItems="center">
+                      <Image
+                        src="../assets/chicken_choice.png"
+                        bgColor="text.darkIvory"
+                        borderRadius="2xl"
+                        p={5}
+                        h={{ base: "300px", md: "400px", lg: "400px" }}
+                        w={{ base: "200px", md: "300px", lg: "300px" }}
+                      />
+                      <Heading fontSize={{ base: "xs", md: "h6" }}>
+                        Chicken choice- 70g
+                      </Heading>
+                    </Stack>
 
-            <Heading fontSize={{ base: "h6", md: "h3" }}>+</Heading>
+                    <Heading fontSize={{ base: "h6", md: "h3" }}>+</Heading>
+                  </Flex>
+                </SwiperSlide>
 
-            <Stack alignItems="center">
-              <Image
-                src="../assets/fish_fantasy.png"
-                bgColor="text.darkIvory"
-                borderRadius="2xl"
-                p={5}
-                h={{ base: "200px", md: "300px", lg: "400px" }}
-                w={{ base: "100px", md: "200px", lg: "300px" }}
-              />
-              <Heading fontSize={{ base: "xs", md: "h6" }}>
-                Fish fantasy- 70g
-              </Heading>
-            </Stack>
+                <SwiperSlide>
+                  <Flex alignItems="center" gap={{ base: 2, lg: 0 }}>
+                    <Stack alignItems="center">
+                      <Image
+                        src="../assets/fish_fantasy.png"
+                        bgColor="text.darkIvory"
+                        borderRadius="2xl"
+                        p={5}
+                        h={{ base: "300px", md: "400px", lg: "400px" }}
+                        w={{ base: "200px", md: "300px", lg: "300px" }}
+                      />
+                      <Heading fontSize={{ base: "xs", md: "h6" }}>
+                        Fish fantasy- 70g
+                      </Heading>
+                    </Stack>
 
-            <Heading fontSize={{ base: "h6", md: "h3" }}>+</Heading>
+                    <Heading fontSize={{ base: "h6", md: "h3" }}>+</Heading>
+                  </Flex>
+                </SwiperSlide>
 
-            <Stack alignItems="center">
-              <Image
-                src="../assets/meaty_marvel.png"
-                bgColor="text.darkIvory"
-                borderRadius="2xl"
-                p={5}
-                h={{ base: "200px", md: "300px", lg: "400px" }}
-                w={{ base: "100px", md: "200px", lg: "300px" }}
-              />
-              <Heading fontSize={{ base: "xs", md: "h6" }}>
-                Meaty marvel-70g
-              </Heading>
-            </Stack>
+                <SwiperSlide>
+                  <Flex alignItems="center">
+                    <Stack alignItems="center">
+                      <Image
+                        src="../assets/meaty_marvel.png"
+                        bgColor="text.darkIvory"
+                        borderRadius="2xl"
+                        p={5}
+                        h={{ base: "300px", md: "400px", lg: "400px" }}
+                        w={{ base: "200px", md: "300px", lg: "300px" }}
+                      />
+                      <Heading fontSize={{ base: "xs", md: "h6" }}>
+                        Meaty marvel-70g
+                      </Heading>
+                    </Stack>
+                  </Flex>
+                </SwiperSlide>
+              </Swiper>
+            </Flex>
           </Flex>
 
           <RichText
@@ -469,7 +505,7 @@ const HomeScreen = () => {
       </Box>
 
       {/* BECOME PART OF TOVLO FAMILY */}
-      <Box p={{ base: 0, lg: 5 }} py={{ base: 10, md: 20 }}>
+      <Box p={{ base: 0, lg: 5 }} py={{ base: 0, md: 20 }}>
         <Stack gap={5} py={10} px={{ base: 2, lg: 5 }} alignItems="center">
           <RichText
             text="Become a Part of the Tovlo Family"

@@ -111,16 +111,17 @@ const ComparisonTable = () => {
             >
               {/* Title */}
               <Table.Cell
-                py={{ base: 5, md: 10 }}
+                py={{ base: 2, md: 10 }}
                 border="none"
-                borderLeftRadius="4xl"
+                fontWeight="500"
+                borderLeftRadius={{ base: "3xl", md: "4xl" }}
               >
                 {item.title}
               </Table.Cell>
 
               {/* Frozen Food */}
               <Table.Cell
-                py={{ base: 5, md: 10 }}
+                py={{ base: 2, md: 10 }}
                 border="none"
                 textAlign="center"
               >
@@ -133,7 +134,7 @@ const ComparisonTable = () => {
 
               {/* Tovlo */}
               <Table.Cell
-                py={{ base: 5, md: 10 }}
+                py={{ base: 2, md: 10 }}
                 border="1px solid"
                 borderBottomRadius={
                   index === tableData.length - 1 ? "40px" : ""
@@ -154,7 +155,7 @@ const ComparisonTable = () => {
                 py={{ base: 5, md: 10 }}
                 border="none"
                 textAlign="center"
-                borderRightRadius="4xl"
+                borderRightRadius={{ base: "3xl", md: "4xl" }}
               >
                 <Icon
                   as={item.dry ? FaRegThumbsUp : FaRegThumbsDown}

@@ -28,7 +28,7 @@ const ProductCard = ({ product }) => {
         _hover={{ textDecoration: "none" }}
       >
         <Card.Root
-          maxW="sm"
+          maxW="md"
           overflow="hidden"
           bgColor="transparent"
           border="none"
@@ -111,11 +111,15 @@ const ProductCard = ({ product }) => {
           <Card.Footer
             gap="2"
             alignItems="center"
+            justifyContent="center"
             textAlign="center"
-            w="full"
             p={0}
+            w="full"
           >
-            <Flex justifyContent="space-between" w="full">
+            <Flex
+              justifyContent="space-between"
+              w={{ base: "full", xl: "90%" }}
+            >
               {product.ingredients.map((ingredient) => (
                 <Stack color="text.primary" opacity={0.7}>
                   <Heading
