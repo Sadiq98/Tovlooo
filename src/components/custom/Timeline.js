@@ -79,7 +79,7 @@ const CustomTimeline = () => {
           style={{
             width: "100%",
             height,
-            backgroundColor: "#017D65", // or use your Chakra color token
+            backgroundColor: "#017D65",
             transformOrigin: "top",
           }}
         />

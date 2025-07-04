@@ -64,7 +64,7 @@ const ComparisonTable = () => {
             <Table.ColumnHeader
               fontSize={{ base: "text6", md: "h5" }}
               border="none"
-              borderTopRadius="4xl"
+              borderTopRadius={{ base: "3xl", md: "4xl" }}
               py={10}
               textAlign="center"
               bgColor="background.green"
@@ -138,7 +138,9 @@ const ComparisonTable = () => {
                 py={{ base: 2, md: 10 }}
                 border="1px solid"
                 borderBottomRadius={
-                  index === tableData.length - 1 ? "40px" : ""
+                  index === tableData.length - 1
+                    ? { base: "3xl", md: "4xl" }
+                    : undefined
                 }
                 bgColor="background.green"
                 color="text.ivory"
