@@ -8,6 +8,7 @@ import { Flex } from "@chakra-ui/react";
 import { FloatingWhatsApp } from "react-floating-whatsapp";
 
 const HomeScreen = lazy(() => import("./screens/HomeScreen"));
+const AboutScreen = lazy(() => import("./screens/AboutScreen"));
 
 const App = () => {
   useEffect(() => {
@@ -35,6 +36,7 @@ const App = () => {
       <Flex direction="column" as="main" color="text.primary">
         <Routes>
           <Route path="/" element={<HomeScreen />} />
+          <Route path="/about" element={<AboutScreen />} />
         </Routes>
         {/* <ScrollToTop /> */}
       </Flex>

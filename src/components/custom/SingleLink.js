@@ -7,7 +7,7 @@ const SingleLink = ({ url, icon, label, ...props }) => {
       as={RouterLink}
       to={url}
       color="text.ivory"
-      fontSize="buttonMenuItem"
+      fontSize="buttonLink"
       fontWeight="normal"
       display="flex"
       alignItems="center"

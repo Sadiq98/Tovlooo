@@ -12,7 +12,13 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-import { FaFacebookF, FaPhone } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaPhone,
+  FaLinkedinIn,
+  FaTwitter,
+  FaInstagram,
+} from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { GoArrowUpRight } from "react-icons/go";
 import { RiInstagramFill } from "react-icons/ri";
@@ -47,11 +53,19 @@ const Footer = () => {
 
   const socials = [
     {
-      icon: RiInstagramFill,
+      icon: FaInstagram,
       url: "https://instagram.com/",
     },
     {
       icon: FaFacebookF,
+      url: "https://facebook.com/",
+    },
+    {
+      icon: FaLinkedinIn,
+      url: "https://facebook.com/",
+    },
+    {
+      icon: FaTwitter,
       url: "https://facebook.com/",
     },
   ];
@@ -167,12 +181,12 @@ const Footer = () => {
                   bgColor="text.ivory"
                   key={index}
                   borderRadius="full"
-                  p={1}
+                  p={2}
                 >
                   <Icon
                     as={item.icon}
                     color="text.primary"
-                    boxSize={8}
+                    boxSize={6}
                     key={index}
                   />
                 </Link>
@@ -221,12 +235,12 @@ const Footer = () => {
                   bgColor="text.ivory"
                   key={index}
                   borderRadius="full"
-                  p={1}
+                  p={2}
                 >
                   <Icon
                     as={item.icon}
                     color="text.primary"
-                    boxSize={8}
+                    boxSize={6}
                     key={index}
                   />
                 </Link>

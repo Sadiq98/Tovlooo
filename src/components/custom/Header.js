@@ -27,6 +27,14 @@ const SingleLink = lazy(() => import("./SingleLink"));
 const Logo = lazy(() => import("../../data/Logo"));
 
 const Header = () => {
+  const defaultNav = [
+    { label: "About us", url: "/about" },
+    { label: "Catalog", url: "/catalog" },
+    { label: "Ingredients", url: "/ingredients" },
+    { label: "Blog", url: "/blog" },
+    { label: "Contact Us", url: "/contact" },
+  ];
+
   const drawerNav = [
     { label: "About us", url: "/about" },
     { label: "Catalog", url: "/catalog" },
@@ -81,11 +89,9 @@ const Header = () => {
             gap={{ lg: 5, xl: 6 }}
             display={{ base: "none", lg: "flex" }}
           >
-            <SingleLink label="About us" />
-            <SingleLink label="Catalog" />
-            <SingleLink label="Ingredients" />
-            <SingleLink label="Blog" />
-            <SingleLink label="Contact us" />
+            {defaultNav.map(({ label, url }) => (
+              <SingleLink key={label} label={label} url={url} />
+            ))}
           </Flex>
 
           {/* Center Logo */}
