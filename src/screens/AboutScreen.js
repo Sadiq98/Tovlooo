@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
 import { products } from "./../data/products";
+import { time } from "framer-motion";
 
 const AboutScreen = () => {
   const mission = [
@@ -75,6 +76,29 @@ const AboutScreen = () => {
     {
       image: "../assets/about/product3.png",
       text: "Supplements: nutritional supplements that target specific health needs, ensuring optimal well-being for your pet.",
+    },
+  ];
+
+  const timeline = [
+    {
+      image: "../assets/about/timeline1.jpg",
+      heading: "Week 1-2",
+      text: "More energy, better digestion",
+    },
+    {
+      image: "../assets/about/timeline2.jpg",
+      heading: "Week 4",
+      text: "Less itching, healthier skin",
+    },
+    {
+      image: "../assets/about/timeline3.jpg",
+      heading: "Week 12",
+      text: "Shinier coat, better breath",
+    },
+    {
+      image: "../assets/about/timeline4.jpg",
+      heading: "Week 24+",
+      text: "Stronger bones, fewer vet visits",
     },
   ];
 
@@ -497,6 +521,78 @@ const AboutScreen = () => {
             </Box>
           </Stack>
         </Flex>
+      </Stack>
+
+      {/* Section 7 */}
+      <Stack
+        justifyContent="center"
+        alignItems="center"
+        py={{ base: 10, md: 20 }}
+        gap={8}
+      >
+        <RichText text="What you can expect: the Tovlo transformation" />
+        <Text
+          fontSize={{ base: "text8", md: "text1", lg: "text1" }}
+          w={{ base: "full", md: "sm", lg: "lg" }}
+          textAlign="center"
+        >
+          When you make the switch to Tovlo, you’ll notice significant
+          improvements in your dog’s health over time. Here's a breakdown of
+          what to expect as your dog enjoys the benefits of fresh, high-quality
+          food:
+        </Text>
+        <Stack
+          gap={10}
+          my={20}
+          bgImage="url('../assets/about/Line.svg')"
+          bgSize="100% 100%"
+          bgRepeat="no-repeat"
+        >
+          {timeline.map((data, index) => (
+            <Flex
+              alignItems="center"
+              gap={{ base: 5, md: 10, lg: 20 }}
+              direction={index % 2 === 0 ? "row" : "row-reverse"}
+            >
+              <Box position="relative">
+                <Box
+                  bgColor={
+                    index % 2 === 0
+                      ? "background.lightGreen"
+                      : "background.lightOrange"
+                  }
+                  boxSize={{ base: "100px", md: "200px" }}
+                  borderRadius="full"
+                  position="absolute"
+                  top={-50}
+                  left={index % 2 === 0 ? -50 : null}
+                  right={index % 2 === 0 ? null : -50}
+                />
+                <Image
+                  src={data.image}
+                  boxSize={{ base: "140px", md: "300px", lg: "400px" }}
+                  borderRadius="full"
+                />
+              </Box>
+              <Stack gap={{ base: 2, md: 5 }}>
+                <Heading
+                  fontSize={{ base: "text6", md: "h5", lg: "h4" }}
+                  lineHeight="heading2"
+                >
+                  {data.heading}
+                </Heading>
+                <Text
+                  fontSize={{ base: "text8", md: "text1", lg: "text1" }}
+                  fontWeight="normal"
+                  lineHeight="text1"
+                  w={{ base: "120px", md: "full" }}
+                >
+                  {data.text}
+                </Text>
+              </Stack>
+            </Flex>
+          ))}
+        </Stack>
       </Stack>
 
       {/* Section 8 - OUR PRODUCTS */}
