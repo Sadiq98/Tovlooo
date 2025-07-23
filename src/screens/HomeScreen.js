@@ -193,11 +193,14 @@ const HomeScreen = () => {
           gap={{ md: 10, lg: 5 }}
           display={{ base: "none", md: "grid" }}
         >
-          {products.map((product, index) => (
-            <SwiperSlide>
-              <ProductCard product={product} />
-            </SwiperSlide>
-          ))}
+          {products
+            .sort((a, b) => b.rating - a.rating)
+            .slice(0, 4)
+            .map((product, index) => (
+              <SwiperSlide key={product.id}>
+                <ProductCard product={product} />
+              </SwiperSlide>
+            ))}
         </Grid>
         <Box w="full" zIndex={2} display={{ base: "block", md: "none" }}>
           <Swiper
@@ -205,7 +208,7 @@ const HomeScreen = () => {
             spaceBetween={20}
             breakpoints={{
               0: {
-                slidesPerView: 1.05,
+                slidesPerView: 1.1,
                 spaceBetween: 10, // for mobile
               },
               640: {
