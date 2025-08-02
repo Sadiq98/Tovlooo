@@ -1,4 +1,3 @@
-/*************  ✨ Windsurf Command 🌟  *************/
 import {
   Box,
   Stack,
@@ -53,38 +52,69 @@ const CatalogScreen = () => {
   ];
 
   const [selectedFilters, setSelectedFilters] = useState({});
+  const [selectedSort, setSelectedSort] = useState(["Popularity"]);
   const [page, setPage] = useState(1);
   const pageSize = 9;
 
   const handleFilterChange = (key, selectedOptions) => {
-    setPage(1); // reset to first page on filter change
+    setPage(1);
     setSelectedFilters((prev) => ({
       ...prev,
-      [key]: selectedOptions,
+      [key]: Array.isArray(selectedOptions)
+        ? selectedOptions
+        : [selectedOptions],
     }));
   };
 
-  const applyFilters = (productList) => {
+  // Filter products
+  const filterProducts = (productList, filters) => {
     return productList.filter((product) => {
-      return Object.entries(selectedFilters).every(([filterKey, values]) => {
-        if (!values || values.length === 0) return true;
-        const productValue = product[filterKey];
-
-        if (Array.isArray(productValue)) {
-          return values.every((val) => productValue.includes(val));
-        } else {
-          return values.includes(productValue);
+      for (const [key, selectedOptions] of Object.entries(filters)) {
+        if (selectedOptions && selectedOptions.length > 0) {
+          const productValue = product[key];
+          if (Array.isArray(productValue)) {
+            if (!productValue.some((val) => selectedOptions.includes(val))) {
+              return false;
+            }
+          } else {
+            if (!selectedOptions.includes(productValue)) {
+              return false;
+            }
+          }
         }
-      });
+      }
+      return true;
     });
   };
 
-  const filteredProducts = applyFilters(products);
+  // Sort products
+  const sortProducts = (productList) => {
+    const sortValue = selectedSort[0]; // Get the selected value from the array
 
-  const totalProducts = filteredProducts.length;
+    switch (sortValue) {
+      case "Price: Low to High":
+        return productList.sort((a, b) => a.price - b.price);
+      case "Price: High to Low":
+        return productList.sort((a, b) => b.price - a.price);
+      case "Newest first":
+        return productList.sort(
+          (a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0)
+        );
+      case "Popularity":
+      default:
+        return productList.sort((a, b) => b.rating - a.rating);
+    }
+  };
+
+  const filtered = filterProducts(products, selectedFilters);
+  const sorted = sortProducts(filtered);
+  const totalProducts = sorted.length;
   const startRange = (page - 1) * pageSize;
   const endRange = startRange + pageSize;
-  const visibleProducts = filteredProducts.slice(startRange, endRange);
+  const visibleProducts = sorted.slice(startRange, endRange);
+
+  console.log(selectedSort);
+  console.log(selectedFilters);
 
   return (
     <>
@@ -133,7 +163,7 @@ const CatalogScreen = () => {
         px={{ base: 2, md: 5 }}
         py={10}
       >
-        {/* Filters */}
+        {/* Filters & Sort */}
         <Flex justifyContent="space-between" w="full">
           <Flex gap={2}>
             {filters.map(({ key, label, options }) => (
@@ -142,9 +172,10 @@ const CatalogScreen = () => {
                 multiple
                 size="xs"
                 w="150px"
-                onValueChange={(selectedOptions) =>
-                  handleFilterChange(key, selectedOptions)
-                }
+                value={selectedFilters[key] || []}
+                onValueChange={(details) => {
+                  handleFilterChange(key, details.value);
+                }}
               >
                 <Select.HiddenSelect />
                 <Select.Control>
@@ -199,13 +230,20 @@ const CatalogScreen = () => {
           {/* Sort */}
           <Flex alignItems="center" gap={2}>
             Sort by:
-            <Select.Root size="xs" w="200px" defaultValue={sortBy[0]}>
+            <Select.Root
+              size="xs"
+              w="200px"
+              onValueChange={({ value }) => {
+                setSelectedSort(value);
+              }}
+              value={selectedSort}
+            >
               <Select.HiddenSelect />
               <Select.Control>
                 <Select.Trigger borderRadius="xl">
                   <Select.ValueText
                     textTransform="uppercase"
-                    placeholder={sortBy[0]}
+                    placeholder={selectedSort}
                   />
                 </Select.Trigger>
                 <Select.IndicatorGroup>
@@ -221,6 +259,8 @@ const CatalogScreen = () => {
                   >
                     {sortBy.map((sort) => (
                       <Select.Item
+                        item={sort}
+                        key={sort}
                         justifyContent="center"
                         fontSize="sm"
                         textTransform="uppercase"
@@ -235,8 +275,6 @@ const CatalogScreen = () => {
                           bgColor: "text.darkOrange",
                           color: "text.ivory",
                         }}
-                        item={sort}
-                        key={sort}
                       >
                         {sort}
                       </Select.Item>
@@ -248,20 +286,19 @@ const CatalogScreen = () => {
           </Flex>
         </Flex>
 
-        {/* Selected Filters */}
-        <Flex></Flex>
-
         {/* Product Grid */}
         <Grid
           templateColumns={{ base: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" }}
           gap={{ base: 2, md: 5 }}
           px={{ base: 2, md: 5 }}
           py={10}
+          w={"full"}
         >
           {visibleProducts.map((product) => (
             <ProductCard product={product} key={product.id} hideFooter />
           ))}
         </Grid>
+
         {/* Pagination */}
         <Pagination.Root
           pageSize={pageSize}
@@ -303,5 +340,3 @@ const CatalogScreen = () => {
 };
 
 export default CatalogScreen;
-
-/*******  167fe64a-392f-4f3a-b0be-c6f2febb03ae  *******/
