@@ -356,6 +356,43 @@ const CatalogScreen = () => {
           </Flex>
         </Flex>
 
+        {Object.entries(selectedFilters).some(
+          ([_, values]) => values.length > 0
+        ) && (
+          <Flex
+            wrap="wrap"
+            gap={2}
+            w="full"
+            px={{ base: 2, md: 5 }}
+            display={{ base: "none", md: "flex" }}
+          >
+            {Object.entries(selectedFilters).map(([key, values]) =>
+              values.map((value) => (
+                <Flex
+                  key={`${key}-${value}`}
+                  alignItems="center"
+                  py={1}
+                  fontSize={{ base: "xs", md: "sm", lg: "md" }}
+                >
+                  <Text textTransform="uppercase">{value}</Text>
+                  <CloseButton
+                    variant="plain"
+                    color={"text.primary"}
+                    size={{ base: "xs", md: "sm", lg: "md" }}
+                    onClick={() => {
+                      const updated = { ...selectedFilters };
+                      updated[key] = updated[key].filter((v) => v !== value);
+                      if (updated[key].length === 0) delete updated[key];
+                      setSelectedFilters(updated);
+                      setPage(1);
+                    }}
+                  />
+                </Flex>
+              ))
+            )}
+          </Flex>
+        )}
+
         {/* Product Grid */}
         <Grid
           templateColumns={{ base: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" }}
