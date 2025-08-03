@@ -11,7 +11,7 @@ import {
   IconButton,
   Stack,
 } from "@chakra-ui/react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useLocation } from "react-router-dom";
 
 import { IoChevronDown } from "react-icons/io5";
 import { FaGlobe, FaHandshake, FaUserAlt } from "react-icons/fa";
@@ -27,6 +27,9 @@ const SingleLink = lazy(() => import("./SingleLink"));
 const Logo = lazy(() => import("../../data/Logo"));
 
 const Header = () => {
+  const location = useLocation();
+  const header2 = ["/ingredients"].includes(location.pathname);
+
   const defaultNav = [
     { label: "About us", url: "/about" },
     { label: "Catalog", url: "/catalog" },
@@ -73,7 +76,7 @@ const Header = () => {
         justifyContent="center"
       >
         <Flex
-          bg="transparent"
+          bg={header2 ? "#FAFCEB" : "transparent"}
           w="full"
           justify="space-between"
           align="center"
@@ -81,7 +84,7 @@ const Header = () => {
           px={{ base: 3, md: 5 }}
           borderRadius="lg"
           border="2px solid"
-          borderColor="text.ivory"
+          borderColor={header2 ? "text.primary" : "text.ivory"}
         >
           {/* Left Nav */}
           <Flex
@@ -90,7 +93,12 @@ const Header = () => {
             display={{ base: "none", lg: "flex" }}
           >
             {defaultNav.map(({ label, url }) => (
-              <SingleLink key={label} label={label} url={url} />
+              <SingleLink
+                key={label}
+                label={label}
+                url={url}
+                color={header2 ? "text.primary" : "text.ivory"}
+              />
             ))}
           </Flex>
 
@@ -103,8 +111,12 @@ const Header = () => {
             }}
             _focus={{ outline: "none" }}
           >
-            <Logo display={{ base: "none", xl: "block" }} />
             <Logo
+              fill={header2 ? "#017D65" : "#FBFFDC"}
+              display={{ base: "none", xl: "block" }}
+            />
+            <Logo
+              fill={header2 ? "#017D65" : "#FBFFDC"}
               width="120"
               height="20"
               display={{ base: "block", xl: "none" }}
@@ -115,10 +127,10 @@ const Header = () => {
           <Flex align="center" gap={5} display={{ base: "none", lg: "flex" }}>
             <Button
               size="xs"
-              bg="text.ivory"
-              color="text.primary"
+              bg={header2 ? "text.primary" : "text.ivory"}
+              color={header2 ? "text.ivory" : "text.primary"}
               borderRadius="md"
-              _hover={{ bg: "text.darkIvory" }}
+              _hover={{ bg: header2 ? "text.darkGreen1" : "text.darkIvory" }}
             >
               Get a custom plugin
             </Button>
@@ -127,8 +139,10 @@ const Header = () => {
               <Menu.Trigger asChild>
                 <Button
                   variant="plain "
-                  _hover={{ color: "text.darkIvory" }}
-                  color="text.ivory"
+                  _hover={{
+                    color: header2 ? "text.darkGreen1" : "text.darkIvory",
+                  }}
+                  color={header2 ? "text.primary" : "text.ivory"}
                   size="sm"
                 >
                   <FaGlobe /> {selectedLanguage || "Select Language"}{" "}
@@ -138,7 +152,9 @@ const Header = () => {
               <Portal>
                 <Menu.Positioner>
                   <Menu.Content>
-                    <Menu.ItemGroup color="text.ivory">
+                    <Menu.ItemGroup
+                      color={header2 ? "text.primary" : "text.ivory"}
+                    >
                       {languages.map(({ language }) => (
                         <Menu.CheckboxItem
                           key={language}
@@ -159,21 +175,23 @@ const Header = () => {
             <Link as={RouterLink} to="/contact">
               <Icon
                 as={FaHandshake}
-                color="text.ivory"
-                _hover={{ color: "text.darkIvory" }}
+                color={header2 ? "text.primary" : "text.ivory"}
+                _hover={{
+                  color: header2 ? "text.darkGreen1" : "text.darkIvory",
+                }}
                 boxSize={8}
               />
             </Link>
             <Icon
               as={FaUserAlt}
-              color="text.ivory"
-              _hover={{ color: "text.darkIvory" }}
+              color={header2 ? "text.primary" : "text.ivory"}
+              _hover={{ color: header2 ? "text.darkGreen1" : "text.darkIvory" }}
               boxSize={6}
             />
             <Icon
               as={RiShoppingBasketFill}
-              color="text.ivory"
-              _hover={{ color: "text.darkIvory" }}
+              color={header2 ? "text.primary" : "text.ivory"}
+              _hover={{ color: header2 ? "text.darkGreen1" : "text.darkIvory" }}
               boxSize={8}
             />
           </Flex>
@@ -186,8 +204,8 @@ const Header = () => {
           >
             <Icon
               as={RiShoppingBasketFill}
-              color="text.ivory"
-              _hover={{ color: "text.darkIvory" }}
+              color={header2 ? "text.primary" : "text.ivory"}
+              _hover={{ color: header2 ? "text.darkGreen1" : "text.darkIvory" }}
               boxSize={{ base: "6", md: "12" }}
             />
 
@@ -196,7 +214,7 @@ const Header = () => {
                 <IconButton bgColor="transparent">
                   <Icon
                     as={IoMenu}
-                    color="text.ivory"
+                    color={header2 ? "text.primary" : "text.ivory"}
                     boxSize={{ base: "6", md: "12" }}
                   />
                 </IconButton>

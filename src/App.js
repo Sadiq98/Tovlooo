@@ -10,6 +10,7 @@ import { FloatingWhatsApp } from "react-floating-whatsapp";
 const HomeScreen = lazy(() => import("./screens/HomeScreen"));
 const AboutScreen = lazy(() => import("./screens/AboutScreen"));
 const CatalogScreen = lazy(() => import("./screens/CatalogScreen"));
+const IngredientScreen = lazy(() => import("./screens/IngredientScreen"));
 
 const App = () => {
   useEffect(() => {
@@ -39,6 +40,7 @@ const App = () => {
           <Route path="/" element={<HomeScreen />} />
           <Route path="/about" element={<AboutScreen />} />
           <Route path="/catalog" element={<CatalogScreen />} />
+          <Route path="/ingredients" element={<IngredientScreen />} />
         </Routes>
         {/* <ScrollToTop /> */}
       </Flex>
