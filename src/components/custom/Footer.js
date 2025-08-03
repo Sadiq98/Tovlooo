@@ -21,11 +21,12 @@ import {
 } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { GoArrowUpRight } from "react-icons/go";
-import { RiInstagramFill } from "react-icons/ri";
+import { marquee2 } from "../../data/homescreenData";
 
 const SingleLink = lazy(() => import("./SingleLink"));
 const Logo = lazy(() => import("../../data/Logo"));
 const FooterBar = lazy(() => import("./FooterBar"));
+const CustomMarquee = lazy(() => import("./Marquee"));
 
 const Footer = () => {
   const navigation = [
@@ -72,6 +73,7 @@ const Footer = () => {
 
   return (
     <>
+      <CustomMarquee data={marquee2} />
       <Stack
         px={5}
         py={10}

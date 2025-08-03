@@ -631,9 +631,6 @@ const HomeScreen = () => {
           </Box>
         </Stack>
       </Box>
-
-      {/* Marquee 2 */}
-      <CustomMarquee data={marquee2} />
     </>
   );
 };

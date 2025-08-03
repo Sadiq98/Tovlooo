@@ -10,10 +10,22 @@ import {
   ButtonGroup,
   Select,
   Portal,
+  Drawer,
+  Button,
+  CloseButton,
+  Icon,
+  Image,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import ProductCard from "../components/custom/ProductCard";
 import { products } from "../data/products";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+
+import { GiSettingsKnobs } from "react-icons/gi";
+import RichText from "../components/custom/RichText";
+import { GreenButton } from "../components/custom/CustomButton";
 
 const CatalogScreen = () => {
   const filters = [
@@ -50,6 +62,35 @@ const CatalogScreen = () => {
     "Price: High to Low",
     "Newest first",
   ];
+
+  const iconData = [
+    {
+      icon: "../assets/Icons/Dog.svg",
+      label: "Supports skin & coat",
+    },
+    {
+      icon: "../assets/Icons/Brain.svg",
+      label: "Boosts cognitive health",
+    },
+    {
+      icon: "../assets/Icons/Muscle.svg",
+      label: "Builds lean muscles",
+    },
+    {
+      icon: "../assets/Icons/Bone.svg",
+      label: "Improves joint strength",
+    },
+    {
+      icon: "../assets/Icons/Meat.svg",
+      label: "High real-meat content",
+    },
+    {
+      icon: "../assets/Icons/No.svg",
+      label: "No harmful chemicals",
+    },
+  ];
+
+  const [open, setOpen] = useState(false);
 
   const [selectedFilters, setSelectedFilters] = useState({});
   const [selectedSort, setSelectedSort] = useState(["Popularity"]);
@@ -89,7 +130,7 @@ const CatalogScreen = () => {
 
   // Sort products
   const sortProducts = (productList) => {
-    const sortValue = selectedSort[0]; // Get the selected value from the array
+    const sortValue = selectedSort[0];
 
     switch (sortValue) {
       case "Price: Low to High":
@@ -112,9 +153,6 @@ const CatalogScreen = () => {
   const startRange = (page - 1) * pageSize;
   const endRange = startRange + pageSize;
   const visibleProducts = sorted.slice(startRange, endRange);
-
-  console.log(selectedSort);
-  console.log(selectedFilters);
 
   return (
     <>
@@ -164,8 +202,13 @@ const CatalogScreen = () => {
         py={10}
       >
         {/* Filters & Sort */}
-        <Flex justifyContent="space-between" w="full">
-          <Flex gap={2}>
+        <Flex
+          justifyContent="space-between"
+          w="full"
+          direction={{ base: "row-reverse", lg: "row" }}
+        >
+          {/* Desktop Filters */}
+          <Flex gap={2} display={{ base: "none", lg: "flex" }}>
             {filters.map(({ key, label, options }) => (
               <Select.Root
                 key={key}
@@ -175,6 +218,7 @@ const CatalogScreen = () => {
                 value={selectedFilters[key] || []}
                 onValueChange={(details) => {
                   handleFilterChange(key, details.value);
+                  setPage(1);
                 }}
               >
                 <Select.HiddenSelect />
@@ -227,14 +271,40 @@ const CatalogScreen = () => {
             ))}
           </Flex>
 
+          {/* Drawer Filters  */}
+          <Flex display={{ base: "flex", lg: "none" }}>
+            <Drawer.Root size="md">
+              <Drawer.Trigger asChild>
+                <Button color="text.primary" variant="plain">
+                  Filters <GiSettingsKnobs transform="rotate(90)" />
+                </Button>
+              </Drawer.Trigger>
+              <Drawer.Positioner>
+                <Drawer.Content bgColor="background.default">
+                  <Drawer.Body mt={28}>
+                    <Stack justifyContent="space-between" h="full"></Stack>
+                  </Drawer.Body>
+                  <Drawer.CloseTrigger asChild>
+                    <CloseButton
+                      color="text.primary"
+                      _hover={{ bgColor: "transparent" }}
+                      size="2xl"
+                    />
+                  </Drawer.CloseTrigger>
+                </Drawer.Content>
+              </Drawer.Positioner>
+            </Drawer.Root>
+          </Flex>
+
           {/* Sort */}
           <Flex alignItems="center" gap={2}>
             Sort by:
             <Select.Root
               size="xs"
-              w="200px"
+              w={{ base: "120px", lg: "200px" }}
               onValueChange={({ value }) => {
                 setSelectedSort(value);
+                setPage(1);
               }}
               value={selectedSort}
             >
@@ -262,7 +332,7 @@ const CatalogScreen = () => {
                         item={sort}
                         key={sort}
                         justifyContent="center"
-                        fontSize="sm"
+                        fontSize={{ base: "sm", lg: "sm" }}
                         textTransform="uppercase"
                         border="1px solid"
                         borderColor="text.darkOrange"
@@ -334,6 +404,86 @@ const CatalogScreen = () => {
             />
           </ButtonGroup>
         </Pagination.Root>
+      </Stack>
+
+      {/* Icons */}
+      <Box w="full" px={{ base: 2, md: 5 }} py={10}>
+        <Swiper
+          loop={true}
+          breakpoints={{
+            0: {
+              centeredSlides: true,
+              slidesPerView: 2.8,
+              spaceBetween: 10,
+            },
+            640: {
+              centeredSlides: true,
+              slidesPerView: 4,
+              spaceBetween: 10,
+            },
+            1024: {
+              slidesPerView: 6,
+              spaceBetween: 20,
+            },
+            1920: {
+              slidesPerView: 6,
+              spaceBetween: 20,
+            },
+          }}
+          className="testimonialSwiper"
+        >
+          {iconData.map(({ icon, label }, index) => (
+            <SwiperSlide key={index}>
+              <Stack alignItems={"center"} justifyContent={"center"} gap={5}>
+                <Image src={icon} boxSize="60px" alt={label} w={"auto"} />
+                <Heading
+                  textAlign={"center"}
+                  lineHeight={"heading2"}
+                  fontWeight="500"
+                  fontSize={{ base: "text6", md: "h6", lg: "h5" }}
+                >
+                  {label}
+                </Heading>
+              </Stack>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </Box>
+
+      {/* CTA */}
+      <Stack
+        px={{ base: 2, md: 5 }}
+        py={5}
+        alignItems="center"
+        gap={8}
+        background=" linear-gradient(180deg, #FAFCEB -6.17%, #D5E9D7 48.37%, #FAFCEB 103.97%);"
+      >
+        <Grid
+          templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }}
+          alignItems={"center"}
+          justifyContent={"center"}
+        >
+          <Stack justifyContent={"center"} alignItems={"center"} gap={5}>
+            <RichText
+              text="Not sure where to begin?"
+              width={"full"}
+              fontSize={{ base: "h6", md: "h6", lg: "h4" }}
+            />
+            <Heading
+              fontSize={{ base: "text6", md: "h6", lg: "h5" }}
+              textAlign={"center"}
+              lineHeight={"heading2"}
+              w={{ base: "full", md: "full", lg: "80%" }}
+            >
+              Start with our bestseller Starter Pack – curated selection loved
+              by first-timers
+            </Heading>
+            <GreenButton px={{ base: 20, lg: 40 }}>
+              Explore the Starter Pack
+            </GreenButton>
+          </Stack>
+          <Image src="../assets/starter_box.png" w={"full"} />
+        </Grid>
       </Stack>
     </>
   );
