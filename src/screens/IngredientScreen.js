@@ -171,7 +171,7 @@ const IngredientScreen = () => {
         alignItems={"center"}
         gap={5}
         py={20}
-        px={40}
+        px={{ base: 2, md: 5, lg: 40 }}
       >
         <RichText
           text="Every Dog Is Different. So should be their food"
@@ -186,6 +186,7 @@ const IngredientScreen = () => {
           gap={10}
           alignItems={"center"}
           justifyContent={"center"}
+          w={"full"}
         >
           <Image
             src="../assets/ingredients/form_img.png"
@@ -300,7 +301,9 @@ const IngredientScreen = () => {
               <Spacer h="10" />
 
               {/* Submit Button */}
-              <GreenButton>Try our custom bowl quiz</GreenButton>
+              <GreenButton px={{ base: 20, lg: 20, xl: 40 }}>
+                Try our custom bowl quiz
+              </GreenButton>
             </Fieldset.Root>
           </form>
         </Grid>
