@@ -12,7 +12,10 @@ import {
   Stack,
   Text,
   Portal,
+  Timeline,
 } from "@chakra-ui/react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -21,6 +24,13 @@ import RichText from "../components/custom/RichText";
 import { GreenButton } from "../components/custom/CustomButton";
 
 const IngredientScreen = () => {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end end"], // start when center hits viewport
+  });
+  const height = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
   const ingredients = [
     {
       image: "../assets/ingredients/fish.png",
@@ -68,6 +78,32 @@ const IngredientScreen = () => {
     {
       image: "../assets/ingredients/flax_swiper.png",
       heading: "Flax",
+    },
+  ];
+
+  const timelineData = [
+    {
+      image: "../assets/ingredients/timeline1.png",
+      heading: "Flaxseed",
+      text: "Source of ALA fatty acids for cognitive function",
+      label: "Digestion",
+    },
+    {
+      image: "../assets/ingredients/timeline2.png",
+      heading: "Pumpkin",
+      text: "Helps regulate digestion & soothe sensitive stomachs ",
+      label: "Immunity",
+    },
+    {
+      image: "../assets/ingredients/timeline3.png",
+      heading: "Chicory root",
+      text: "Prebiotic to fuel healthy gut bacteria",
+      label: "Skin health",
+    },
+    {
+      image: "",
+      heading: "",
+      text: "",
     },
   ];
 
@@ -163,6 +199,84 @@ const IngredientScreen = () => {
             </Stack>
           ))}
         </Grid>
+      </Stack>
+
+      {/* Section 3 - Timeline */}
+
+      <Stack
+        justifyContent="center"
+        alignItems="center"
+        gap={5}
+        py={20}
+        px={{ base: 2, md: 5, lg: 40 }}
+        ref={containerRef}
+        position="relative"
+      >
+        <RichText
+          text="Not Just Ingredients - Purposeful Nutrition"
+          width={{ base: "full", md: "full", lg: "4xl" }}
+        />
+        <Timeline.Root
+          display={{ base: "none", md: "flex" }}
+          size="md"
+          color={"text.primary"}
+          w={"full"}
+          variant={"solid"}
+        >
+          {timelineData.map((data, index) => {
+            const isLast = index === timelineData.length - 1;
+            return (
+              <Timeline.Item
+                gap={5}
+                key={index}
+                display={isLast ? "none" : "flex"}
+                alignItems={"center"}
+                justifyContent={"center"}
+              >
+                <Timeline.Content width="auto" pr={{ base: 20, lg: 40 }} py={5}>
+                  <HStack gap={10}>
+                    <Image
+                      loading="lazy"
+                      src={data.image}
+                      objectFit={"cover"}
+                      minW={{ base: "40%", md: "30vw", lg: "40vW" }}
+                      h={{ base: "50px", md: "150px", lg: "200px" }}
+                    />
+                    <Stack
+                      w={{ base: "2xs", lg: "2xs", xl: "2xs" }}
+                      justifyContent={"center"}
+                      gap={3}
+                    >
+                      <Heading fontSize={{ base: "h6", md: "h6", lg: "h5" }}>
+                        {data.heading}
+                      </Heading>
+                      <Text
+                        fontSize={{ base: "text8", md: "text8", lg: "text6" }}
+                      >
+                        {data.text}
+                      </Text>
+                    </Stack>
+                  </HStack>
+                </Timeline.Content>
+                <Timeline.Connector
+                  justifyContent={"center"}
+                  alignContent={"center"}
+                >
+                  <Timeline.Separator />
+                  <Timeline.Indicator color={"text.primary"} />
+                </Timeline.Connector>
+                <Timeline.Content transform="rotate(-90deg)">
+                  <Timeline.Title
+                    fontFamily={"heading"}
+                    fontSize={{ base: "text8", md: "text8", lg: "text6" }}
+                  >
+                    {data.label}
+                  </Timeline.Title>
+                </Timeline.Content>
+              </Timeline.Item>
+            );
+          })}
+        </Timeline.Root>
       </Stack>
 
       {/* Section 4 - Form */}
