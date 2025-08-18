@@ -16,16 +16,17 @@ import {
   Icon,
   Image,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
-import ProductCard from "../components/custom/ProductCard";
+import React, { useState, lazy } from "react";
 import { products } from "../data/products";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 
 import { GiSettingsKnobs } from "react-icons/gi";
-import RichText from "../components/custom/RichText";
 import { GreenButton } from "../components/custom/CustomButton";
+
+const ProductCard = lazy(() => import("../components/custom/ProductCard"));
+const RichText = lazy(() => import("../components/custom/RichText"));
 
 const CatalogScreen = () => {
   const filters = [

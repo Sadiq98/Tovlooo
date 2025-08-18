@@ -23,7 +23,7 @@ const ProductCard = ({ product, hideFooter = false }) => {
     <>
       <Link
         as={RouterLink}
-        to={`/product/${product.id}`}
+        to={`/catalog/${product.id}`}
         _focus={{ outline: "none" }}
         _hover={{ textDecoration: "none" }}
       >

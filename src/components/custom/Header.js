@@ -11,7 +11,7 @@ import {
   IconButton,
   Stack,
 } from "@chakra-ui/react";
-import { Link as RouterLink, useLocation } from "react-router-dom";
+import { Link as RouterLink, useLocation, matchPath } from "react-router-dom";
 
 import { IoChevronDown } from "react-icons/io5";
 import { FaGlobe, FaHandshake, FaUserAlt } from "react-icons/fa";
@@ -28,8 +28,12 @@ const Logo = lazy(() => import("../../data/Logo"));
 
 const Header = () => {
   const location = useLocation();
-  const header2 = ["/ingredients"].includes(location.pathname);
+  const staticPaths = ["/ingredients"];
+  const dynamicPatterns = ["/catalog/:id"];
 
+  const header2 =
+    staticPaths.includes(location.pathname) ||
+    dynamicPatterns.some((pattern) => matchPath(pattern, location.pathname));
   const defaultNav = [
     { label: "About us", url: "/about" },
     { label: "Catalog", url: "/catalog" },
@@ -98,6 +102,9 @@ const Header = () => {
                 label={label}
                 url={url}
                 color={header2 ? "text.primary" : "text.ivory"}
+                _hover={{
+                  color: header2 ? "text.darkGreen1" : "text.darkIvory",
+                }}
               />
             ))}
           </Flex>
