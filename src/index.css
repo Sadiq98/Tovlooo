@@ -47,6 +47,21 @@ video{
   border: 2px solid #017D6580;
 }
 
+/* Remove focus ring globally */
+:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+[data-state="open"]:focus,
+button:focus,
+[role="tab"]:focus,
+[role="button"]:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 2px transparent !important; /* makes ring transparent */
+}
+
+
 
 
 

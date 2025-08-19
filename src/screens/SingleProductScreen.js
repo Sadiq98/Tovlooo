@@ -15,6 +15,7 @@ import {
   Flex,
   Grid,
   Heading,
+  HStack,
   Icon,
   Image,
   Input,
@@ -22,6 +23,7 @@ import {
   List,
   Progress,
   Separator,
+  Slider,
   Stack,
   Table,
   Tabs,
@@ -43,6 +45,7 @@ import { FaPaw } from "react-icons/fa";
 import { BsArrowUpRight } from "react-icons/bs";
 import Newsletter from "../components/custom/Newsletter";
 import TAccordian from "../components/custom/TAccordian";
+import { MdGraphicEq } from "react-icons/md";
 
 const SingleProductScreen = () => {
   const badge = ["Complete Nutrition", "AAFCO Approved", "Expert Formulated"];
@@ -814,7 +817,7 @@ const SingleProductScreen = () => {
           <Grid
             templateColumns={{ base: "repeat(4, 1fr)", lg: "repeat(4, 1fr)" }}
             gap={{ base: 5, lg: 10 }}
-            display={{ base: "none", md: "grid" }}
+            display={{ base: "none", lg: "grid" }}
           >
             {switchTovlo.map((item) => (
               <Stack
@@ -880,37 +883,113 @@ const SingleProductScreen = () => {
               ))}
             </Swiper>
           </Box>
-          <Box
-            position="relative"
-            w={{ base: "full", lg: "full", xl: "65%" }}
-            orientation="vertical"
-          >
-            <Progress.Root
-              value={30}
-              min={0}
-              max={100}
-              w={"full"}
-              colorPalette={"teal"}
-            >
-              <Progress.Track
-                bgColor={"text.lightGreen50"}
-                borderRadius="lg"
-                p={1}
-              >
-                <Progress.Range orientation="vertical" h={"2px"} />
-              </Progress.Track>
-            </Progress.Root>
 
-            <Icon
-              as={FaPaw}
-              color={"text.primary"}
-              boxSize={8}
-              position={"absolute"}
-              top={"50%"}
-              left={"30%"}
-              transform="translate(-50%, -50%)"
-            />
-          </Box>
+          {/* Slider */}
+          <Slider.Root
+            display={{ base: "block", md: "none", lg: "block" }}
+            w={{ base: "full", md: "full", lg: "70%" }}
+            step={33.33}
+            defaultValue={[33.33]}
+          >
+            <Slider.Control>
+              <Slider.Track bgColor={"text.lightGreen50"} py={1} h={"10px"}>
+                <Slider.Range bgColor={"text.primary"} h={"3px"} />
+              </Slider.Track>
+              <Slider.Thumb
+                index={0}
+                bgColor="transparent"
+                border={"none"}
+                boxSize={8}
+              >
+                <Icon
+                  borderRadius={"full"}
+                  bgColor={"transparent"}
+                  as={FaPaw}
+                  color={"text.primary"}
+                  boxSize={8}
+                  position={"absolute"}
+                  top={"50%"}
+                  left={"30%"}
+                  transform="translate(-50%, -50%)"
+                />
+              </Slider.Thumb>
+            </Slider.Control>
+          </Slider.Root>
+
+          {/* Tab Layout */}
+          <Grid
+            templateColumns={"2fr 1fr"}
+            justifyItems={"end"}
+            display={{ base: "none", md: "grid", lg: "none" }}
+          >
+            <Stack>
+              {switchTovlo.map((item) => (
+                <HStack gap={10}>
+                  <Image src={item.image} boxSize="200px" />
+                  <Stack
+                    w={"full"}
+                    gap={2}
+                    textAlign={"center"}
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                  >
+                    <Heading
+                      fontSize={{ base: "h5", md: "h5", lg: "h6" }}
+                      lineHeight={"heading2"}
+                    >
+                      {item.days}
+                    </Heading>
+                    <Text
+                      fontSize={{ base: "text8", md: "text6", lg: "text6" }}
+                    >
+                      {item.text}
+                    </Text>
+                  </Stack>
+                </HStack>
+              ))}
+            </Stack>
+            {/* Slider */}
+
+            <Slider.Root
+              display={{ base: "none", md: "block", lg: "none" }}
+              step={33.33}
+              h={"full"}
+              orientation="vertical"
+              defaultValue={[33.33 * 2]}
+            >
+              <Slider.Control>
+                <Slider.Track bgColor={"text.primary"}>
+                  <Slider.Range bgColor={"background.default"} />
+                </Slider.Track>
+                <Slider.Thumb
+                  index={0}
+                  bgColor="transparent"
+                  border={"none"}
+                  boxSize={8}
+                  _focus={{
+                    boxShadow: "none !important",
+                    outline: "none !important",
+                  }}
+                  _focusVisible={{
+                    boxShadow: "none !important",
+                    outline: "none !important",
+                  }}
+                >
+                  <Icon
+                    borderRadius={"full"}
+                    bgColor={"transparent"}
+                    as={FaPaw}
+                    color={"text.primary"}
+                    boxSize={8}
+                    position={"absolute"}
+                    top={"50%"}
+                    left={"30%"}
+                    transform="translate(-50%, -50%)"
+                  />
+                </Slider.Thumb>
+              </Slider.Control>
+            </Slider.Root>
+          </Grid>
         </Stack>
       </Stack>
 
