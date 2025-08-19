@@ -26,6 +26,9 @@ const ProductCard = ({ product, hideFooter = false }) => {
         to={`/catalog/${product.id}`}
         _focus={{ outline: "none" }}
         _hover={{ textDecoration: "none" }}
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: "auto" });
+        }}
       >
         <Card.Root
           maxW="lg"
