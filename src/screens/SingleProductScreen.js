@@ -30,8 +30,11 @@ import {
 } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/pagination";
-import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+
+import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { products } from "../data/products";
 import { GreenButton, OrangeButton } from "../components/custom/CustomButton";
 import RichText from "./../components/custom/RichText";
@@ -266,12 +269,20 @@ const SingleProductScreen = () => {
     },
   ];
 
+  const images = [
+    "/assets/products/chicken_choice.png",
+    "/assets/products/chicken_choice.png",
+    "/assets/products/chicken_choice.png",
+    "/assets/products/chicken_choice.png",
+  ];
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { id } = useParams();
   const product1 = products[id - 1];
 
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState();
   const [comment, setComment] = useState("");
@@ -409,20 +420,204 @@ const SingleProductScreen = () => {
             </Text>
           </Stack>
           <Stack
-            justifyContent={"center"}
-            alignItems={"center"}
-            bgColor={"text.ivory"}
-            border={"2px solid"}
-            borderColor="text.lightGreen50"
+            justifyContent="center"
+            alignItems="center"
+            bgColor={{ base: "transparent", md: "text.ivory" }}
+            border="2px solid"
+            borderColor={{ base: "transparent", md: "text.lightGreen50" }}
             borderRadius="xl"
-            w={"full"}
+            w="full"
             order={{ base: 1, md: 2 }}
+            p={{ base: 2, md: 5 }}
           >
-            <Image
-              boxSize={{ base: "80%", lg: "60%" }}
-              src={product1.image}
-              objectFit={`contain`}
-            />
+            {/* Desktop Swiper */}
+            <Flex
+              alignItems={"center"}
+              gap={5}
+              justifyContent={"center"}
+              display={{ base: "none", lg: "flex" }}
+            >
+              {/* Main Image Swiper */}
+              <Swiper
+                loop
+                spaceBetween={10}
+                thumbs={{ swiper: thumbsSwiper }}
+                modules={[FreeMode, Thumbs]}
+                style={{ width: "500px", height: "500px" }}
+              >
+                {images.map((src, index) => (
+                  <SwiperSlide key={index}>
+                    <Flex
+                      justifyContent={"center"}
+                      alignItems={"center"}
+                      w={"100%"}
+                    >
+                      <Image
+                        src={src}
+                        alt={`Image ${index}`}
+                        boxSize="60%"
+                        objectFit={"contain"}
+                      />
+                    </Flex>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+
+              {/* Thumbnail Swiper (Vertical on Right) */}
+              <Swiper
+                loop
+                onSwiper={setThumbsSwiper}
+                direction="vertical"
+                spaceBetween={10}
+                slidesPerView={4}
+                freeMode={true}
+                watchSlidesProgress={true}
+                modules={[FreeMode, Thumbs]}
+                style={{ width: "100px", height: "500px" }}
+                breakpoints={{}}
+              >
+                {images.map((src, index) => (
+                  <SwiperSlide key={index}>
+                    <Flex
+                      justifyContent={"center"}
+                      alignItems={"center"}
+                      w={"100%"}
+                      border={"2px solid"}
+                      borderColor="background.lightGreen"
+                      borderRadius={"md"}
+                      p={2}
+                      className="thumb-slide"
+                    >
+                      <Image
+                        src={src}
+                        alt={`Image ${index}`}
+                        boxSize="60%"
+                        objectFit={"contain"}
+                      />
+                    </Flex>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </Flex>
+
+            {/* Tablet Swiper */}
+            <Stack
+              alignItems={"center"}
+              gap={10}
+              justifyContent={"space-between"}
+              display={{ base: "none", md: "flex", lg: "none" }}
+            >
+              {/* Main Image Swiper */}
+              <Swiper
+                loop
+                spaceBetween={10}
+                thumbs={{ swiper: thumbsSwiper }}
+                modules={[FreeMode, Thumbs]}
+                style={{ width: "300px", height: "300px" }}
+              >
+                {images.map((src, index) => (
+                  <SwiperSlide key={index}>
+                    <Flex
+                      justifyContent={"center"}
+                      alignItems={"center"}
+                      w={"100%"}
+                    >
+                      <Image
+                        src={src}
+                        alt={`Image ${index}`}
+                        boxSize="60%"
+                        objectFit={"contain"}
+                      />
+                    </Flex>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+
+              {/* Thumbnail Swiper (Vertical on Right) */}
+              <Swiper
+                loop
+                onSwiper={setThumbsSwiper}
+                spaceBetween={10}
+                slidesPerView={4}
+                freeMode={true}
+                watchSlidesProgress={true}
+                modules={[FreeMode, Thumbs]}
+                style={{ width: "300px" }}
+                breakpoints={{}}
+              >
+                {images.map((src, index) => (
+                  <SwiperSlide key={index}>
+                    <Flex
+                      justifyContent={"center"}
+                      alignItems={"center"}
+                      w={"100%"}
+                      border={"2px solid"}
+                      borderColor="background.lightGreen"
+                      borderRadius={"md"}
+                      p={2}
+                      className="thumb-slide"
+                    >
+                      <Image
+                        src={src}
+                        alt={`Image ${index}`}
+                        boxSize="60%"
+                        objectFit={"contain"}
+                      />
+                    </Flex>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </Stack>
+
+            {/* Mobile Swiper */}
+            {/* <Box w="full" display={{ base: "block", md: "none" }}>
+              <Swiper loop={true} slidesPerView={1.1} spaceBetween={10}>
+                {images.map((src, index) => (
+                  <SwiperSlide>
+                    <Stack
+                      gap={5}
+                      alignItems={"center"}
+                      justifyContent={"center"}
+                    >
+                      <Image
+                        src={src}
+                        alt={`Image ${index}`}
+                        boxSize={"80%"}
+                        objectFit="contain"
+                      />
+                    </Stack>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </Box> */}
+            <Box w={"350px"} display={{ base: "block", md: "none" }}>
+              <Swiper
+                loop={true}
+                breakpoints={{
+                  0: {
+                    slidesPerView: 1.05,
+                    spaceBetween: 10, // for mobile
+                  },
+                }}
+                className="testimonialSwiper"
+              >
+                {images.map((src) => (
+                  <SwiperSlide>
+                    <Flex
+                      bgColor={"text.ivory"}
+                      border={"2px solid"}
+                      borderColor={"text.lightGreen50"}
+                      borderRadius={"xl"}
+                      justifyContent={"center"}
+                      alignItems={"center"}
+                      p={5}
+                    >
+                      <Image src={src} boxSize={"70%"} />
+                    </Flex>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </Box>
           </Stack>
         </Grid>
       </Box>
@@ -618,11 +813,16 @@ const SingleProductScreen = () => {
           <Text>Gradual transitions = happy digestion.</Text>
           <Grid
             templateColumns={{ base: "repeat(4, 1fr)", lg: "repeat(4, 1fr)" }}
-            gap={10}
+            gap={{ base: 5, lg: 10 }}
             display={{ base: "none", md: "grid" }}
           >
             {switchTovlo.map((item) => (
-              <Stack justifyContent={"center"} alignItems={"center"} gap={5}>
+              <Stack
+                justifyContent={"center"}
+                textAlign={"center"}
+                alignItems={"center"}
+                gap={5}
+              >
                 <Heading
                   fontSize={{ base: "h3", md: "h6", lg: "h6" }}
                   lineHeight={"heading2"}
@@ -633,7 +833,7 @@ const SingleProductScreen = () => {
                   src={item.image}
                   boxSize={{ base: "200px", md: "150px", lg: "200px" }}
                 />
-                <Text fontSize={{ base: "text6", md: "text8", lg: "text6" }}>
+                <Text fontSize={{ base: "text6", md: "12px", lg: "text6" }}>
                   {item.text}
                 </Text>
               </Stack>
@@ -715,111 +915,118 @@ const SingleProductScreen = () => {
       </Stack>
 
       {/* Section - 6 */}
-      <Grid
-        templateColumns={{ base: "repeat(1, 1fr)", lg: "repeat(2, 1fr)" }}
-        justifyItems={"center"}
+      <Stack
         p={{ base: 5, md: 10, lg: 20 }}
         background=" linear-gradient(180.15deg, #FAFCEB 0.13%, #FBFFDC 49.52%, #FAFCEB 99.87%);"
       >
-        <Stack justifyContent={"center"} alignItems={"center"}>
-          <RichText
-            text={"How Much Should You Feed?"}
-            width={{ base: "full", md: "xl" }}
-          />
-          <Text fontSize={{ base: "text6", md: "text8", lg: "text6" }}>
-            Select weight. We’ll do the math.
-          </Text>
-          <Tabs.Root
-            defaultValue={tabContent[0].weight}
-            variant="plain"
-            justifyItems="center"
-            flexWrap={"wrap"}
-          >
-            <Tabs.List
-              bgColor="transparent"
-              p="1"
-              gap={5}
-              as={Grid}
-              templateColumns="repeat(3, 1fr)"
+        <Grid
+          templateColumns={{ base: "repeat(1, 1fr)", lg: "repeat(2, 1fr)" }}
+          justifyItems={"center"}
+          bgImage="url(../assets/products/bone_banner.svg)"
+          bgSize="cover"
+          bgPos="center"
+          bgRepeat="no-repeat"
+        >
+          <Stack justifyContent={"center"} alignItems={"center"}>
+            <RichText
+              text={"How Much Should You Feed?"}
+              width={{ base: "full", md: "xl" }}
+            />
+            <Text fontSize={{ base: "text6", md: "text8", lg: "text6" }}>
+              Select weight. We’ll do the math.
+            </Text>
+            <Tabs.Root
+              defaultValue={tabContent[0].weight}
+              variant="plain"
+              justifyItems="center"
+              flexWrap={"wrap"}
             >
-              {tabContent.map((item, index) => (
-                <Tabs.Trigger
-                  key={index}
-                  value={item.weight}
-                  border="2px solid"
-                  borderColor="text.orange"
-                  lineHeight={"heading2"}
-                  borderRadius="lg"
-                  fontFamily="body"
-                  fontSize={{ base: "text8", md: "h6" }}
-                  color="text.orange"
-                  _selected={{ bg: "text.orange", color: "text.ivory" }}
-                  w={{ base: "100px", md: "150px" }}
-                  justifyContent={"center"}
-                  py={3}
-                >
-                  {item.weight}
-                </Tabs.Trigger>
-              ))}
-            </Tabs.List>
-
-            {tabContent.map((item, index) => (
-              <Tabs.Content key={index} value={item.weight} gap={5}>
-                <Flex
-                  w={"full"}
-                  justifyContent={"center"}
-                  alignItems={"center"}
-                  py={{ base: 5, md: 10 }}
-                  gap={10}
-                  direction={"column"}
-                >
-                  <Image
-                    src="../assets/home_dog.png"
-                    boxSize={"300px"}
-                    display={{ base: "block", md: "none" }}
-                  />
-                  <Flex
-                    bgColor={"text.orange"}
-                    alignItems={"center"}
-                    w={"fit-content"}
-                    p={2}
-                    gap={5}
-                    borderRadius={"full"}
+              <Tabs.List
+                bgColor="transparent"
+                p="1"
+                gap={5}
+                as={Grid}
+                templateColumns="repeat(3, 1fr)"
+              >
+                {tabContent.map((item, index) => (
+                  <Tabs.Trigger
+                    key={index}
+                    value={item.weight}
+                    border="2px solid"
+                    borderColor="text.orange"
+                    lineHeight={"heading2"}
+                    borderRadius="lg"
+                    fontFamily="body"
+                    fontSize={{ base: "text8", md: "h6" }}
+                    color="text.orange"
+                    _selected={{ bg: "text.orange", color: "text.ivory" }}
+                    w={{ base: "100px", md: "150px" }}
+                    justifyContent={"center"}
+                    py={3}
                   >
-                    <Image src="../assets/scoop.png" w={"80px"} />
-                    <Stack
+                    {item.weight}
+                  </Tabs.Trigger>
+                ))}
+              </Tabs.List>
+
+              {tabContent.map((item, index) => (
+                <Tabs.Content key={index} value={item.weight} gap={5}>
+                  <Flex
+                    w={"full"}
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                    py={{ base: 5, md: 10 }}
+                    gap={10}
+                    direction={"column"}
+                  >
+                    <Image
+                      src="../assets/home_dog.png"
+                      boxSize={"300px"}
+                      display={{ base: "block", md: "none" }}
+                    />
+                    <Flex
+                      bgColor={"text.orange"}
                       alignItems={"center"}
-                      justifyContent={"center"}
-                      gap={2}
-                      px={5}
-                      py={1}
-                      bgColor={"text.ivory"}
+                      w={"fit-content"}
+                      p={2}
+                      gap={5}
                       borderRadius={"full"}
                     >
-                      <Heading
-                        fontSize={{ base: "h5", md: "h5", lg: "h5" }}
-                        fontWeight={"400"}
+                      <Image src="../assets/scoop.png" w={"80px"} />
+                      <Stack
+                        alignItems={"center"}
+                        justifyContent={"center"}
+                        gap={2}
+                        px={5}
+                        py={1}
+                        bgColor={"text.ivory"}
+                        borderRadius={"full"}
                       >
-                        {item.perDay}/day
-                      </Heading>
-                      <Text
-                        fontSize={{ base: "text6", md: "text8", lg: "text8" }}
-                      >
-                        ( {item.scoops} scoops)
-                      </Text>
-                    </Stack>
+                        <Heading
+                          fontSize={{ base: "h5", md: "h5", lg: "h5" }}
+                          fontWeight={"400"}
+                        >
+                          {item.perDay}/day
+                        </Heading>
+                        <Text
+                          fontSize={{ base: "text6", md: "text8", lg: "text8" }}
+                        >
+                          ( {item.scoops} scoops)
+                        </Text>
+                      </Stack>
+                    </Flex>
                   </Flex>
-                </Flex>
-              </Tabs.Content>
-            ))}
-          </Tabs.Root>
-        </Stack>
-        <Image
-          src="../assets/home_dog.png"
-          boxSize={"300px"}
-          display={{ base: "none", md: "block" }}
-        />
-      </Grid>
+                </Tabs.Content>
+              ))}
+            </Tabs.Root>
+          </Stack>
+          <Image
+            src="../assets/home_dog.png"
+            boxSize={"300px"}
+            display={{ base: "none", md: "block" }}
+          />
+        </Grid>
+      </Stack>
 
       {/* Section - 7 */}
       <Stack
@@ -831,6 +1038,10 @@ const SingleProductScreen = () => {
       >
         <RichText text="What Real Dog Parents Are Saying" />
         <Grid
+          bgImage="url(../assets/products/paw_banner.svg)"
+          bgSize="cover"
+          bgPos="center"
+          bgRepeat="no-repeat"
           templateColumns={{ base: "repeat(1, 1fr)", md: "3fr 2fr" }}
           bgColor={"text.primary"}
           alignItems={"center"}

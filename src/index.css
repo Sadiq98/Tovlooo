@@ -42,6 +42,16 @@ video{
   border-radius: 20px;
 }
 
+/* highlight active thumbnail */
+.swiper-slide-thumb-active .thumb-slide {
+  border: 2px solid #017D6580;
+}
+
+
+
+
+
+
 
 
 
