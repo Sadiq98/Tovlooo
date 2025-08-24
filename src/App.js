@@ -11,6 +11,7 @@ const HomeScreen = lazy(() => import("./screens/HomeScreen"));
 const AboutScreen = lazy(() => import("./screens/AboutScreen"));
 const CatalogScreen = lazy(() => import("./screens/CatalogScreen"));
 const SingleProductScreen = lazy(() => import("./screens/SingleProductScreen"));
+const StarterPackScreen = lazy(() => import("./screens/StarterPackScreen"));
 const IngredientScreen = lazy(() => import("./screens/IngredientScreen"));
 
 const App = () => {
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="/about" element={<AboutScreen />} />
           <Route path="/catalog" element={<CatalogScreen />} />
           <Route path="/catalog/:id" element={<SingleProductScreen />} />
+          <Route path="/starterpack" element={<StarterPackScreen />} />
           <Route path="/ingredients" element={<IngredientScreen />} />
         </Routes>
         {/* <ScrollToTop /> */}

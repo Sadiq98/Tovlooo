@@ -365,7 +365,7 @@ const HomeScreen = () => {
             textTransform="none"
             fontSize={{ base: "text1", md: "h4" }}
           />
-          <GreenButton>Try the starter pack</GreenButton>
+          <GreenButton url="/starterpack">Try the starter pack</GreenButton>
         </Stack>
       </Box>
 

@@ -8,6 +8,9 @@ export const GreenButton = ({ children, onClick, url, ...props }) => {
       to={url}
       _focus={{ outline: "none" }}
       _hover={{ textDecoration: "none" }}
+      onClick={() => {
+        window.scrollTo({ top: 0, behavior: "auto" });
+      }}
     >
       <Button
         onClick={onClick}
@@ -67,6 +70,9 @@ export const OrangeButton = ({ children, onClick, url, ...props }) => {
       to={url}
       _focus={{ outline: "none" }}
       _hover={{ textDecoration: "none" }}
+      onClick={() => {
+        window.scrollTo({ top: 0, behavior: "auto" });
+      }}
     >
       <Button
         onClick={onClick}
