@@ -13,6 +13,7 @@ const CatalogScreen = lazy(() => import("./screens/CatalogScreen"));
 const SingleProductScreen = lazy(() => import("./screens/SingleProductScreen"));
 const StarterPackScreen = lazy(() => import("./screens/StarterPackScreen"));
 const IngredientScreen = lazy(() => import("./screens/IngredientScreen"));
+const AllBlogsScreen = lazy(() => import("./screens/AllBlogsScreen"));
 
 const App = () => {
   useEffect(() => {
@@ -44,6 +45,7 @@ const App = () => {
           <Route path="/catalog" element={<CatalogScreen />} />
           <Route path="/catalog/:id" element={<SingleProductScreen />} />
           <Route path="/starterpack" element={<StarterPackScreen />} />
+          <Route path="/blog" element={<AllBlogsScreen />} />
           <Route path="/ingredients" element={<IngredientScreen />} />
         </Routes>
         {/* <ScrollToTop /> */}

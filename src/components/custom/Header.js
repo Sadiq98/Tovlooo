@@ -28,7 +28,7 @@ const Logo = lazy(() => import("../../data/Logo"));
 
 const Header = () => {
   const location = useLocation();
-  const staticPaths = ["/ingredients", "/starterpack"];
+  const staticPaths = ["/ingredients", "/starterpack", "/blog"];
   const dynamicPatterns = ["/catalog/:id"];
 
   const header2 =
