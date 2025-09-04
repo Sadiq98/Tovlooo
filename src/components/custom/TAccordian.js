@@ -1,9 +1,9 @@
 import { Accordion, Heading, Icon, Image, Theme } from "@chakra-ui/react";
 import { transform } from "framer-motion";
 import React from "react";
-import { BsArrowUpCircle } from "react-icons/bs";
+import { BsArrowDownCircle, BsArrowUpCircle } from "react-icons/bs";
 
-const TAccordian = ({ data, ...props }) => {
+export const TAccordian = ({ data, ...props }) => {
   return (
     <>
       <Accordion.Root
@@ -44,4 +44,45 @@ const TAccordian = ({ data, ...props }) => {
   );
 };
 
-export default TAccordian;
+export const TAccordian2 = ({ heading, content, index, ...props }) => {
+  return (
+    <>
+      <Accordion.Root
+        collapsible
+        variant={"enclosed"}
+        border={"none"}
+        borderRadius={"4xl"}
+        bgColor={"custom.lightGreen"}
+        {...props}
+      >
+        <Accordion.Item
+          key={index}
+          value={index}
+          color={"text.primary"}
+          borderColor={"text.lightGreen50"}
+          _open={{ bg: "background.green", color: "text.ivory" }}
+        >
+          <Accordion.ItemTrigger py={2}>
+            <Heading flex={1} textTransform={"uppercase"} fontWeight={"500"}>
+              {index + 1}. {heading}
+            </Heading>
+            <Accordion.ItemIndicator
+              _open={{
+                bg: "text.ivory",
+                color: "text.primary",
+              }}
+              borderRadius={"full"}
+            >
+              <Icon boxSize={8} bgColor={"transparent"}>
+                <BsArrowDownCircle />
+              </Icon>
+            </Accordion.ItemIndicator>
+          </Accordion.ItemTrigger>
+          <Accordion.ItemContent>
+            <Accordion.ItemBody>{content}</Accordion.ItemBody>
+          </Accordion.ItemContent>
+        </Accordion.Item>
+      </Accordion.Root>
+    </>
+  );
+};

@@ -44,7 +44,7 @@ import ProductCard from "../components/custom/ProductCard";
 import { FaPaw } from "react-icons/fa";
 import { BsArrowUpRight } from "react-icons/bs";
 import Newsletter from "../components/custom/Newsletter";
-import TAccordian from "../components/custom/TAccordian";
+import { TAccordian } from "../components/custom/TAccordian";
 import { MdGraphicEq } from "react-icons/md";
 
 const SingleProductScreen = () => {

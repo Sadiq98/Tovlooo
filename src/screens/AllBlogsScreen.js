@@ -2,16 +2,11 @@ import { ButtonGroup, IconButton, Pagination, Stack } from "@chakra-ui/react";
 import React, { useState } from "react";
 import RichText from "../components/custom/RichText";
 import BlogCard from "../components/custom/BlogCard";
+import { blogs } from "../data/blogs";
 
 const AllBlogsScreen = () => {
   const [page, setPage] = useState(1);
   const pageSize = 4;
-
-  // Example blog data (replace with redux `blogs`)
-  const blogs = Array.from({ length: 9 }, (_, i) => ({
-    id: i + 1,
-    title: `Blog ${i + 1}`,
-  }));
 
   // Calculate the slice of blogs for the current page
   const startIndex = (page - 1) * pageSize;
