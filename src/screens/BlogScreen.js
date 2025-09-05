@@ -1,4 +1,12 @@
-import { Box, Stack, Image, Heading, Text, Button } from "@chakra-ui/react";
+import {
+  Box,
+  Stack,
+  Image,
+  Heading,
+  Text,
+  Button,
+  Link,
+} from "@chakra-ui/react";
 import React, { lazy } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -148,14 +156,16 @@ const BlogScreen = () => {
         pt={{ base: 28, md: 28, lg: 24 }}
         alignItems={"flex-start"}
       >
-        <Button
-          textAlign={"left"}
-          color={"text.primary"}
-          variant="plain"
-          textTransform="uppercase"
-        >
-          <RiArrowLeftLine /> BACK
-        </Button>
+        <Link href="/blog">
+          <Button
+            textAlign={"left"}
+            color={"text.primary"}
+            variant="plain"
+            textTransform="uppercase"
+          >
+            <RiArrowLeftLine /> BACK
+          </Button>
+        </Link>
         <Stack
           justifyContent={"center"}
           alignItems={"center"}
