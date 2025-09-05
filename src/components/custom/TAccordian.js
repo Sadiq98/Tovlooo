@@ -63,7 +63,12 @@ export const TAccordian2 = ({ heading, content, index, ...props }) => {
           _open={{ bg: "background.green", color: "text.ivory" }}
         >
           <Accordion.ItemTrigger py={2}>
-            <Heading flex={1} textTransform={"uppercase"} fontWeight={"500"}>
+            <Heading
+              flex={1}
+              textTransform={"uppercase"}
+              fontWeight={"500"}
+              fontSize={{ base: "15px", md: "text6", lg: "text1" }}
+            >
               {index + 1}. {heading}
             </Heading>
             <Accordion.ItemIndicator
@@ -79,7 +84,11 @@ export const TAccordian2 = ({ heading, content, index, ...props }) => {
             </Accordion.ItemIndicator>
           </Accordion.ItemTrigger>
           <Accordion.ItemContent>
-            <Accordion.ItemBody>{content}</Accordion.ItemBody>
+            <Accordion.ItemBody
+              fontSize={{ base: "text8", md: "text8", lg: "text6" }}
+            >
+              {content}
+            </Accordion.ItemBody>
           </Accordion.ItemContent>
         </Accordion.Item>
       </Accordion.Root>

@@ -15,7 +15,12 @@ const AllBlogsScreen = () => {
 
   return (
     <>
-      <Stack justifyContent={"center"} alignItems={"center"} py={20} pt={40}>
+      <Stack
+        justifyContent={"center"}
+        alignItems={"center"}
+        py={20}
+        pt={{ base: 28, md: 32, lg: 40 }}
+      >
         <RichText
           text="BLOG"
           fontSize={{ base: "h3", md: "h1", lg: "115px" }}

@@ -1,7 +1,15 @@
-import { Box, Stack } from "@chakra-ui/react";
-import React from "react";
-import RichText from "../components/custom/RichText";
+import { Box, Stack, Image, Heading, Text, Button } from "@chakra-ui/react";
+import React, { lazy } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Autoplay, Pagination } from "swiper/modules";
+
 import { TAccordian2 } from "../components/custom/TAccordian";
+import { OrangeButton } from "../components/custom/CustomButton";
+import { RiArrowLeftLine } from "react-icons/ri";
+
+const RichText = lazy(() => import("./../components/custom/RichText"));
 
 const BlogScreen = () => {
   const faqs = [
@@ -109,8 +117,84 @@ const BlogScreen = () => {
     },
   ];
 
+  const relatedArticles = [
+    {
+      image: "../assets/about/Itay_with_dog.png",
+      text: "How one man’s passion for dogs sparked the creation of Tovlo – Israel’s trusted pet nutrition brand",
+    },
+    {
+      image: "../assets/about/Itay_with_dog.png",
+      text: "How one man’s passion for dogs sparked the creation of Tovlo – Israel’s trusted pet nutrition brand",
+    },
+    {
+      image: "../assets/about/Itay_with_dog.png",
+      text: "How one man’s passion for dogs sparked the creation of Tovlo – Israel’s trusted pet nutrition brand",
+    },
+    {
+      image: "../assets/about/Itay_with_dog.png",
+      text: "How one man’s passion for dogs sparked the creation of Tovlo – Israel’s trusted pet nutrition brand",
+    },
+    {
+      image: "../assets/about/Itay_with_dog.png",
+      text: "How one man’s passion for dogs sparked the creation of Tovlo – Israel’s trusted pet nutrition brand",
+    },
+  ];
+
   return (
     <>
+      {/* Blog */}
+      <Stack
+        px={{ base: 2, md: 5, lg: 5 }}
+        pt={{ base: 28, md: 28, lg: 24 }}
+        alignItems={"flex-start"}
+      >
+        <Button
+          textAlign={"left"}
+          color={"text.primary"}
+          variant="plain"
+          textTransform="uppercase"
+        >
+          <RiArrowLeftLine /> BACK
+        </Button>
+        <Stack
+          justifyContent={"center"}
+          alignItems={"center"}
+          w={"100%"}
+          gap={5}
+        >
+          <RichText text="How to Choose Dog Food: Veterinarian’s Advice" />
+          <Image
+            src="../assets/about/Itay_with_dog.png"
+            borderRadius={"2xl"}
+            h={{ base: "300px", md: "400px", lg: "400px" }}
+            w={{ base: "100%", lg: "55vw" }}
+          />
+          <Stack w={{ base: "100%", md: "80vw", lg: "50vw" }} gap={5}>
+            <Heading
+              fontSize={{ base: "text2", md: "h5", lg: "h5" }}
+              fontWeight={500}
+              lineHeight={"heading2"}
+            >
+              A personal mission to revolutionize dog food in Israel
+            </Heading>
+            <Text>
+              It all started with a simple yet powerful question: Why are our
+              dogs being fed food that we wouldn’t dare put on our own plates?
+              This question haunted Itay Adri, an unwavering animal lover and
+              visionary, leading to the birth of Tovlo in late 2023, a
+              revolutionary dog food startup dedicated to creating natural dog
+              food made with the utmost care and premium ingredients right here
+              in Israel. Tovlo’s mission is clear: to provide premium pet food
+              in Israel that truly nourishes dogs from the inside out,
+              especially those with sensitive stomachs or digestive issues. But
+              this is no ordinary business venture , this is a deeply personal
+              journey fueled by love, loss, and hope.
+            </Text>
+          </Stack>
+        </Stack>
+      </Stack>
+
+      {/* FAQs */}
       <Stack
         py={20}
         px={{ base: 2, md: 5, lg: 5 }}
@@ -120,7 +204,7 @@ const BlogScreen = () => {
       >
         <RichText text="FAQs about Tovlo dog food" />
         <Stack
-          w={{ base: "100%", lg: "50%" }}
+          w={{ base: "100%", lg: "60%" }}
           justifyContent={"center"}
           alignItems={"center"}
           gap={3}
@@ -133,6 +217,64 @@ const BlogScreen = () => {
             />
           ))}
         </Stack>
+      </Stack>
+
+      {/* Related Articles */}
+      <Stack
+        justifyContent={"center"}
+        alignItems={"center"}
+        py={20}
+        gap={8}
+        pl={{ base: 2, md: 5, lg: 5 }}
+      >
+        <RichText text="More related articles" />
+        <Box w="full">
+          <Swiper
+            loop={true}
+            spaceBetween={20}
+            breakpoints={{
+              0: {
+                slidesPerView: 1.1,
+                spaceBetween: 10, // for mobile
+              },
+              640: {
+                slidesPerView: 2.1,
+                spaceBetween: 10, // tablet
+              },
+              1024: {
+                slidesPerView: 4.1,
+                spaceBetween: 20, // desktop
+              },
+            }}
+            className="testimonialSwiper"
+          >
+            {relatedArticles.map((blog, index) => (
+              <SwiperSlide>
+                <Stack key={index}>
+                  <Image
+                    objectFit={"cover"}
+                    borderColor={"text.lightGreen50"}
+                    border={"2px solid"}
+                    borderRadius={"2xl"}
+                    src={blog.image}
+                    h={
+                      index % 2 === 0
+                        ? { base: "350px", md: "400px", lg: "300px" }
+                        : { base: "350px", md: "400px", lg: "350px" }
+                    }
+                  />
+                  <Heading
+                    lineClamp={2}
+                    fontWeight={"500"}
+                    fontSize={{ base: "text1", md: "h6" }}
+                  >
+                    {blog.text}
+                  </Heading>
+                </Stack>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </Box>
       </Stack>
     </>
   );
