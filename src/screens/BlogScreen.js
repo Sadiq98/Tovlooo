@@ -196,7 +196,7 @@ const BlogScreen = () => {
 
       {/* FAQs */}
       <Stack
-        py={20}
+        pt={20}
         px={{ base: 2, md: 5, lg: 5 }}
         justifyContent={"center"}
         alignItems={"center"}
