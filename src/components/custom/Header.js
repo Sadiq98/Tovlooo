@@ -15,7 +15,7 @@ import { Link as RouterLink, useLocation, matchPath } from "react-router-dom";
 
 import { IoChevronDown } from "react-icons/io5";
 import { FaGlobe, FaHandshake, FaUserAlt } from "react-icons/fa";
-import { RiShoppingBasketFill } from "react-icons/ri";
+import { TiShoppingCart } from "react-icons/ti";
 import { IoMenu } from "react-icons/io5";
 import { FaFacebookF } from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
@@ -28,7 +28,7 @@ const Logo = lazy(() => import("../../data/Logo"));
 
 const Header = () => {
   const location = useLocation();
-  const staticPaths = ["/ingredients", "/starterpack", "/blog"];
+  const staticPaths = ["/ingredients", "/starterpack", "/blog", "/jerky"];
   const dynamicPatterns = ["/catalog/:id", "/blog/:title"];
 
   const header2 =
@@ -196,7 +196,7 @@ const Header = () => {
               boxSize={6}
             />
             <Icon
-              as={RiShoppingBasketFill}
+              as={TiShoppingCart}
               color={header2 ? "text.primary" : "text.ivory"}
               _hover={{ color: header2 ? "text.darkGreen1" : "text.darkIvory" }}
               boxSize={8}
@@ -210,7 +210,7 @@ const Header = () => {
             display={{ base: "flex", lg: "none" }}
           >
             <Icon
-              as={RiShoppingBasketFill}
+              as={TiShoppingCart}
               color={header2 ? "text.primary" : "text.ivory"}
               _hover={{ color: header2 ? "text.darkGreen1" : "text.darkIvory" }}
               boxSize={{ base: "6", md: "12" }}

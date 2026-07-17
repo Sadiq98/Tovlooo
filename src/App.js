@@ -15,6 +15,7 @@ const StarterPackScreen = lazy(() => import("./screens/StarterPackScreen"));
 const IngredientScreen = lazy(() => import("./screens/IngredientScreen"));
 const AllBlogsScreen = lazy(() => import("./screens/AllBlogsScreen"));
 const BlogScreen = lazy(() => import("./screens/BlogScreen"));
+const JerkyScreen = lazy(() => import("./screens/JerkyScreen"));
 
 const App = () => {
   useEffect(() => {
@@ -49,6 +50,7 @@ const App = () => {
           <Route path="/blog" element={<AllBlogsScreen />} />
           <Route path="/blog/:title" element={<BlogScreen />} />
           <Route path="/ingredients" element={<IngredientScreen />} />
+          <Route path="/jerky" element={<JerkyScreen />} />
         </Routes>
         {/* <ScrollToTop /> */}
       </Flex>

@@ -11,7 +11,7 @@ import {
   Text,
   Link,
 } from "@chakra-ui/react";
-import { RiShoppingBasketFill } from "react-icons/ri";
+import { TiShoppingCart } from "react-icons/ti";
 import Rating from "./Rating";
 import { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
@@ -70,7 +70,7 @@ const ProductCard = ({ product, hideFooter = false }) => {
                   ))}
                 </Flex>
                 <IconButton rounded="full" bgColor="black" color="white">
-                  <RiShoppingBasketFill />
+                  <TiShoppingCart />
                 </IconButton>
               </Flex>
               <Image
