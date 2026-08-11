@@ -9,6 +9,21 @@ import {
   PRODUCT_DETAILS_FAIL,
   PRODUCT_DETAILS_REQUEST,
   PRODUCT_DETAILS_SUCCESS,
+  PRODUCT_GET_FAIL,
+  PRODUCT_GET_REQUEST,
+  PRODUCT_GET_SUCCESS,
+  PRODUCT_IMAGE_FAIL,
+  PRODUCT_IMAGE_REQUEST,
+  PRODUCT_IMAGE_SUCCESS,
+  PRODUCT_IMAGE_UPLOAD_FAIL,
+  PRODUCT_IMAGE_UPLOAD_REQUEST,
+  PRODUCT_IMAGE_UPLOAD_SUCCESS,
+  PRODUCT_IMAGE_REPLACE_FAIL,
+  PRODUCT_IMAGE_REPLACE_REQUEST,
+  PRODUCT_IMAGE_REPLACE_SUCCESS,
+  PRODUCT_IMAGE_DELETE_FAIL,
+  PRODUCT_IMAGE_DELETE_REQUEST,
+  PRODUCT_IMAGE_DELETE_SUCCESS,
   PRODUCT_LIST_FAIL,
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
@@ -29,6 +44,71 @@ export const productListReducer = (state = { products: [] }, action) => {
     case PRODUCT_LIST_SUCCESS:
       return { loading: false, products: action.payload };
     case PRODUCT_LIST_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const productGetReducer = (state = { product: {} }, action) => {
+  switch (action.type) {
+    case PRODUCT_GET_REQUEST:
+      return { ...state, loading: true };
+    case PRODUCT_GET_SUCCESS:
+      return { loading: false, product: action.payload };
+    case PRODUCT_GET_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const productImageReducer = (state = {}, action) => {
+  switch (action.type) {
+    case PRODUCT_IMAGE_REQUEST:
+      return { loading: true };
+    case PRODUCT_IMAGE_SUCCESS:
+      return { loading: false, image: action.payload };
+    case PRODUCT_IMAGE_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const productImageUploadReducer = (state = {}, action) => {
+  switch (action.type) {
+    case PRODUCT_IMAGE_UPLOAD_REQUEST:
+      return { loading: true };
+    case PRODUCT_IMAGE_UPLOAD_SUCCESS:
+      return { loading: false, success: true, data: action.payload };
+    case PRODUCT_IMAGE_UPLOAD_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const productImageReplaceReducer = (state = {}, action) => {
+  switch (action.type) {
+    case PRODUCT_IMAGE_REPLACE_REQUEST:
+      return { loading: true };
+    case PRODUCT_IMAGE_REPLACE_SUCCESS:
+      return { loading: false, success: true, data: action.payload };
+    case PRODUCT_IMAGE_REPLACE_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const productImageDeleteReducer = (state = {}, action) => {
+  switch (action.type) {
+    case PRODUCT_IMAGE_DELETE_REQUEST:
+      return { loading: true };
+    case PRODUCT_IMAGE_DELETE_SUCCESS:
+      return { loading: false, success: true, data: action.payload };
+    case PRODUCT_IMAGE_DELETE_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;
