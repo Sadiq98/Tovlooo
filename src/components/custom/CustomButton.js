@@ -73,6 +73,7 @@ export const OrangeButton = ({ children, onClick, url, ...props }) => {
       onClick={() => {
         window.scrollTo({ top: 0, behavior: "auto" });
       }}
+      width="full"
     >
       <Button
         onClick={onClick}
