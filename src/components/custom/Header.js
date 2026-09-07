@@ -46,6 +46,7 @@ const Header = () => {
     "/blog",
     "/jerky",
     "/supplements",
+    "/account",
   ];
   const dynamicPatterns = ["/catalog/:id", "/blog/:title"];
   const [step, setStep] = useState("details");
