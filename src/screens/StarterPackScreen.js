@@ -118,7 +118,7 @@ const StarterPackScreen = () => {
       heading: "All-natural ingredients",
     },
     {
-      icon: "../assets/Icons/meat.svg",
+      icon: "../assets/Icons/Meat.svg",
       heading: "80% high-quality meat content",
     },
   ];
@@ -363,8 +363,11 @@ const StarterPackScreen = () => {
               templateColumns={{ base: "repeat(1, 1fr)", lg: "3fr 1fr" }}
               gap={3}
             >
-              <OrangeButton w="full">Add to Cart</OrangeButton>
+              <OrangeButton url="/cart" w="full">
+                Add to Cart
+              </OrangeButton>
               <OrangeButton
+                url="/payment"
                 w="full"
                 color={"text.orange"}
                 bgColor="transparent"
@@ -384,7 +387,7 @@ const StarterPackScreen = () => {
           <Stack
             justifyContent="center"
             alignItems="center"
-            bgImage="url('../assets/products/ellipse.svg')"
+            bgImage="url('../assets/products/Ellipse.svg')"
             bgRepeat="no-repeat"
             bgPos={"center"}
             bgSize="100% 100%"
@@ -838,7 +841,7 @@ const StarterPackScreen = () => {
         >
           {/* Mobile Image */}
           <Image
-            src="../assets/card_image.png"
+            src="../assets/Card_image.png"
             boxSize={"300px"}
             objectFit={`contain`}
             display={{ base: "block", md: "none" }}
@@ -862,7 +865,7 @@ const StarterPackScreen = () => {
 
           {/* Desktop Image */}
           <Image
-            src="../assets/card_image.png"
+            src="../assets/Card_image.png"
             boxSize={"300px"}
             objectFit={`contain`}
             display={{ base: "none", md: "block" }}
@@ -1005,6 +1008,7 @@ const StarterPackScreen = () => {
           </Swiper>
         </Box>
         <OrangeButton
+          url="/catalog"
           position={{ base: "initial", lg: "absolute" }}
           right={5}
           top="10%"

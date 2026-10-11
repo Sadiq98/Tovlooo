@@ -44,7 +44,19 @@ export const TAccordian = ({ data, ...props }) => {
   );
 };
 
-export const TAccordian2 = ({ heading, content, index, ...props }) => {
+// headingProps / bodyProps / triggerProps / iconSize are optional overrides
+// so screens can match per-breakpoint Figma typography without duplicating
+// the component. Defaults keep the original look.
+export const TAccordian2 = ({
+  heading,
+  content,
+  index,
+  headingProps,
+  bodyProps,
+  triggerProps,
+  iconSize = 8,
+  ...props
+}) => {
   return (
     <>
       <Accordion.Root
@@ -62,12 +74,13 @@ export const TAccordian2 = ({ heading, content, index, ...props }) => {
           borderColor={"text.lightGreen50"}
           _open={{ bg: "background.green", color: "text.ivory" }}
         >
-          <Accordion.ItemTrigger py={2}>
+          <Accordion.ItemTrigger py={2} {...triggerProps}>
             <Heading
               flex={1}
               textTransform={"uppercase"}
               fontWeight={"500"}
               fontSize={{ base: "15px", md: "text6", lg: "text1" }}
+              {...headingProps}
             >
               {index + 1}. {heading}
             </Heading>
@@ -78,7 +91,7 @@ export const TAccordian2 = ({ heading, content, index, ...props }) => {
               }}
               borderRadius={"full"}
             >
-              <Icon boxSize={8} bgColor={"transparent"}>
+              <Icon boxSize={iconSize} bgColor={"transparent"}>
                 <BsArrowDownCircle />
               </Icon>
             </Accordion.ItemIndicator>
@@ -86,6 +99,7 @@ export const TAccordian2 = ({ heading, content, index, ...props }) => {
           <Accordion.ItemContent>
             <Accordion.ItemBody
               fontSize={{ base: "text8", md: "text8", lg: "text6" }}
+              {...bodyProps}
             >
               {content}
             </Accordion.ItemBody>

@@ -47,8 +47,19 @@ const Header = () => {
     "/jerky",
     "/supplements",
     "/account",
+    "/ambassador",
+    "/contact",
+    "/register",
+    "/quiz",
+    "/payment",
   ];
-  const dynamicPatterns = ["/catalog/:id", "/blog/:title"];
+  const dynamicPatterns = [
+    "/catalog/:id",
+    "/blog/:title",
+    "/cart/:id?",
+    "/my-account/*",
+    "/ambassador/*",
+  ];
   const [step, setStep] = useState("details");
   const [loginDrawerOpen, setLoginDrawerOpen] = useState(false);
 
@@ -71,8 +82,8 @@ const Header = () => {
     { label: "Contacts", url: "/contact" },
     { label: "Account", isAccount: true },
     { label: "Get a custom plan", url: "/contact" },
-    { label: "Ambassador", url: "/contact" },
-    { label: "program", url: "/contact" },
+    { label: "Ambassador", url: "/ambassador" },
+    { label: "program", url: "/ambassador" },
   ];
 
   const socials = [
@@ -247,7 +258,7 @@ const Header = () => {
               </Portal>
             </Menu.Root>
 
-            <Link as={RouterLink} to="/contact">
+            <Link as={RouterLink} to="/ambassador">
               <Icon
                 as={FaHandshake}
                 color={header2 ? "text.primary" : "text.ivory"}

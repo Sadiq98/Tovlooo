@@ -230,6 +230,7 @@ const HomeScreen = () => {
           </Swiper>
         </Box>
         <OrangeButton
+          url="/catalog"
           position={{ base: "initial", lg: "absolute" }}
           right={5}
           top="20%"
