@@ -122,7 +122,7 @@ const MyAccountScreen = () => {
             {tabs.map((tab, index) => (
               <Link
                 as={RouterLink}
-                to={tabs.url}
+                to={tab.url}
                 color="text.primary"
                 fontSize="h5"
                 fontWeight="semibold"

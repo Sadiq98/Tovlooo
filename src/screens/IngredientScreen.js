@@ -461,7 +461,7 @@ const IngredientScreen = () => {
               <SwiperSlide key={index}>
                 <Stack alignItems={"center"} justifyContent={"center"} gap={5}>
                   <Image
-                    src="../assets/icons/check_green.svg"
+                    src="../assets/Icons/check_green.svg"
                     boxSize="60px"
                     w={"auto"}
                   />
