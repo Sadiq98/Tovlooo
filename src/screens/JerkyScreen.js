@@ -59,7 +59,7 @@ const JerkyScreen = () => {
 
   const whyChoose = [
     {
-      icon: "../assets/Icons/Meat.png",
+      icon: "../assets/Icons/Meat.svg",
       heading: "Single protein source",
       text: "Only one meat, great for sensitive tummies.",
     },
@@ -286,8 +286,11 @@ const JerkyScreen = () => {
               templateColumns={{ base: "repeat(1, 1fr)", lg: "3fr 1fr" }}
               gap={3}
             >
-              <OrangeButton w="full">Add to Cart</OrangeButton>
+              <OrangeButton url="/cart" w="full">
+                Add to Cart
+              </OrangeButton>
               <OrangeButton
+                url="/payment"
                 w="full"
                 color={"text.orange"}
                 bgColor="transparent"
@@ -780,7 +783,7 @@ const JerkyScreen = () => {
         >
           {/* Mobile Image */}
           <Image
-            src="../assets/card_image.png"
+            src="../assets/Card_image.png"
             boxSize={"300px"}
             objectFit={`contain`}
             display={{ base: "block", md: "none" }}
@@ -804,7 +807,7 @@ const JerkyScreen = () => {
 
           {/* Desktop Image */}
           <Image
-            src="../assets/card_image.png"
+            src="../assets/Card_image.png"
             boxSize={"300px"}
             objectFit={`contain`}
             display={{ base: "none", md: "block" }}
@@ -864,6 +867,7 @@ const JerkyScreen = () => {
           </Swiper>
         </Box>
         <OrangeButton
+          url="/catalog"
           position={{ base: "initial", lg: "absolute" }}
           right={5}
           top="10%"
